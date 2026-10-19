@@ -1,0 +1,48 @@
+rules_version = '2';
+// Loja Systekna · regras do Firestore
+// Troque o e-mail abaixo pelo mesmo de adminEmails em js/config.js.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in ['seu-email@gmail.com'];
+    }
+    function signedIn() { return request.auth != null; }
+
+    // Catálogo: todos leem, só o administrador escreve
+    match /apps/{appId} {
+      allow read: if true;
+      allow write: if isAdmin()
+        && (request.method == 'delete' || (request.resource.data.name is string && request.resource.data.name.size() <= 30));
+    }
+
+    // Ícones e telas (data URL) — até ~1 MiB por documento
+    match /images/{imgId} {
+      allow read: if true;
+      allow create, update: if isAdmin() && request.resource.data.data is string
+        && request.resource.data.data.matches('^data:image/(png|jpeg|webp|svg\\+xml);base64,.*');
+      allow delete: if isAdmin();
+    }
+
+    // Avaliações: cada pessoa escreve só o próprio documento (id = uid)
+    match /reviews/{uid} {
+      allow read: if true;
+      allow write: if signedIn() && request.auth.uid == uid
+        && (request.method == 'delete' || request.resource.data.apps is map);
+    }
+
+    // Apoio (chave Pix, endereço Bitcoin): todos leem, só o administrador escreve
+    match /settings/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Respostas da Systekna: só o administrador escreve
+    match /replies/{uid} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}
