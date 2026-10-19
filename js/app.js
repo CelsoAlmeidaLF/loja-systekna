@@ -20,7 +20,8 @@ const ICON={
  predio:'M4 21V5l8-2v18M12 9h8v12M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2',carro:'M5 17h14M6 17l1.5-6h9L18 17M7 11l1-4h8l1 4M8 21v-2M16 21v-2',
  chave:'M15 7a4 4 0 11-3.5 6L5 19.5V22H2v-3l1.5-1.5M14 10h.01',escudo:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4',cracha:'M6 3h12v18H6zM10 3v3h4V3M9 16h6M10 11a2 2 0 104 0 2 2 0 00-4 0',
  grafico:'M4 19V5M4 19h16M8 15l4-4 3 3 5-6',loja:'M6 8h12l-1.2 12H7.2zM9 8a3 3 0 016 0',mensagem:'M4 5h16v11H8l-4 4z',
- coracao:'M12 21s-7-4.4-9.3-9A5 5 0 0112 6a5 5 0 019.3 6C19 16.6 12 21 12 21z',foto:'M4 7h4l2-3h4l2 3h4v13H4zM12 17a4 4 0 100-8 4 4 0 000 8z',iot:'M5 12a7 7 0 0114 0M8 12a4 4 0 018 0M12 12v8M9 20h6'};
+ coracao:'M12 21s-7-4.4-9.3-9A5 5 0 0112 6a5 5 0 019.3 6C19 16.6 12 21 12 21z',foto:'M4 7h4l2-3h4l2 3h4v13H4zM12 17a4 4 0 100-8 4 4 0 000 8z',iot:'M5 12a7 7 0 0114 0M8 12a4 4 0 018 0M12 12v8M9 20h6',
+ lamp:'M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.4 1.2 4.5 3 5.7V17a1 1 0 001 1h6a1 1 0 001-1v-2.3c1.8-1.2 3-3.3 3-5.7a7 7 0 00-7-7z',alerta:'M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z'};
 const ST={ok:['ok','Disponível'],beta:['beta','Beta'],lab:['lab','Experimental']};
 const CAT_H={'Finanças':212,'Casa':18,'Negócios':328,'Identidade':186};
 
@@ -405,7 +406,7 @@ function panel(a){const i=['geral','priv','aval'].indexOf(tab);$('tind').style.t
    h='<div class="glass rsum"><div><div class="big">'+(n?fmt1(av):'—')+'</div>'+sline(av)+'<div class="sm">'+(n?n+(n>1?' avaliações':' avaliação'):'Sem avaliações ainda')+'</div></div><div class="bars">'+dist.map(([k,c])=>'<div><span>'+k+'</span><i><b style="width:'+(n?c/n*100:0)+'%"></b></i><span>'+c+'</span></div>').join('')+'</div></div>'+
     (myId&&store?'<div class="glass compose"><h3>'+(mine?'Sua avaliação':'Avalie este app')+'</h3><div class="stars" id="stars">'+[1,2,3,4,5].map(k=>'<button data-r="'+k+'" class="'+(rvStars>=k?'on':'')+'" aria-label="'+k+' estrela'+(k>1?'s':'')+'"><svg viewBox="0 0 24 24"><path d="'+STAR+'"/></svg></button>').join('')+'</div><textarea id="rvT" maxlength="500" placeholder="Conte o que achou (opcional)" aria-label="Comentário">'+esc(mine?mine.text:'')+'</textarea><div class="row2">'+(mine?'<button class="btn sec" id="rvDel">Excluir</button>':'')+'<button class="btn" id="rvPub">'+(mine?'Atualizar':'Publicar avaliação')+'</button></div></div>':'<div class="ro" style="margin-top:12px">Para avaliar, entre com sua conta.<br><button class="btn" data-nav="conta" style="margin-top:10px">Entrar na conta</button></div>')+
  '<div class="glass feed-box"><h3>'+svg(ICON.feedback,'i')+'Enviar sugestão ou relatar problema</h3><p style="color:var(--soft);font-size:13px;margin:0">Envie ideias, sugestões ou relate falhas diretamente para a equipe.</p>'+
- '<div class="feed-seg" id="feedTipo"><button type="button" data-tp="sugestao" aria-pressed="true">💡 Sugestão</button><button type="button" data-tp="problema" aria-pressed="false">⚠️ Problema</button><button type="button" data-tp="elogio" aria-pressed="false">⭐ Elogio</button></div>'+
+ '<div class="feed-seg" id="feedTipo"><button type="button" data-tp="sugestao" aria-pressed="true">'+svg(ICON.lamp,'i')+'Sugestão</button><button type="button" data-tp="problema" aria-pressed="false">'+svg(ICON.alerta,'i')+'Problema</button><button type="button" data-tp="elogio" aria-pressed="false">'+svg(ICON.coracao,'i')+'Elogio</button></div>'+
  '<textarea id="feedTxt" maxlength="1000" placeholder="Escreva aqui seu comentário ou problema (mínimo de 3 caracteres)..." style="min-height:76px"></textarea>'+
  '<input type="email" id="feedMail" placeholder="Seu e-mail para contato (opcional)" value="'+esc(me&&me.email||'')+'">'+
  '<button class="btn" id="feedSend">Enviar para o desenvolvedor</button></div>'+

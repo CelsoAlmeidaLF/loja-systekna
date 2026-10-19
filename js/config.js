@@ -10,17 +10,17 @@
       sem dependência de pop-ups bloqueados no navegador.
    ========================================================= */
 window.STK_CONFIG = {
-  appVersion: "1.4.0",
+  appVersion: "1.4.2",
 
+  /* Em modo demonstração (null), o catálogo local e o cofre operam com Local-First.
+     Para conectar ao Firebase Firestore do ecossistema Systekna, descomente: */
   firebase: null,
-  /* Exemplo para publicação:
+  /*
   firebase: {
-    apiKey: "AIza...",
-    authDomain: "loja-systekna.firebaseapp.com",
-    projectId: "loja-systekna",
-    storageBucket: "loja-systekna.appspot.com",
-    messagingSenderId: "000000000000",
-    appId: "1:000000000000:web:xxxxxxxxxxxx"
+    apiKey: "AIzaSyCQx8kJyXEReASiQMI4a5bT5NNWgtBmJpM",
+    authDomain: "systekna-feedback.firebaseapp.com",
+    projectId: "systekna-feedback",
+    appId: "1:870927975015:web:0576bd5e3cdd8d067d8ac2"
   },
   */
 

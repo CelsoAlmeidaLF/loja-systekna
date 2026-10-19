@@ -23,10 +23,20 @@ function demoStore(cfg) {
   const read = (k, d) => { try { const v = localStorage.getItem(K + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } };
   const write = (k, v) => { try { localStorage.setItem(K + k, JSON.stringify(v)); } catch (e) { throw err("quota", "Espaço do navegador cheio"); } };
 
-  if (!read("seeded", false)) {
-    const m = {};
-    SEED.forEach(a => { const { id, ...rest } = a; m[id] = rest; });
-    write("apps", m);
+  const CURRENT_SEED_VER = 2;
+  const lastSeedVer = read("seed_ver", 0);
+  if (lastSeedVer < CURRENT_SEED_VER) {
+    const currentApps = read("apps", {});
+    SEED.forEach(a => {
+      const { id, ...rest } = a;
+      currentApps[id] = Object.assign({}, rest, currentApps[id] || {}, {
+        iconBase64: rest.iconBase64,
+        url: rest.url,
+        repoUrl: rest.repoUrl
+      });
+    });
+    write("apps", currentApps);
+    write("seed_ver", CURRENT_SEED_VER);
     write("seeded", true);
   }
 
