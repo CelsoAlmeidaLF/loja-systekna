@@ -6,6 +6,15 @@ const local={get(k,d){try{const v=localStorage.getItem('stk-loja-'+k);return v==
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 const ICON={
+ wallet:'M19 7V4a1 1 0 00-1-1H5a2 2 0 000 4h15a1 1 0 011 1v4h-3a2 2 0 000 4h3a1 1 0 001-1v-2a1 1 0 00-1-1M3 5v14a2 2 0 002 2h15a1 1 0 001-1v-4',
+ bitcoin:'M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727',
+ lock:'M3 11h18v11H3zM7 11V7a5 5 0 0110 0v4',
+ eye:'M2.062 12.348a1 1 0 010-.696 10.75 10.75 0 0119.876 0 1 1 0 010 .696 10.75 10.75 0 01-19.876 0M12 15a3 3 0 100-6 3 3 0 000 6z',
+ eyeOff:'M10.733 5.076a10.744 10.744 0 0111.205 6.575 1 1 0 010 .696 10.747 10.747 0 01-1.444 2.49M14.084 14.158a3 3 0 01-4.242-4.242M17.479 17.499a10.75 10.75 0 01-15.417-5.151 1 1 0 010-.696 10.75 10.75 0 014.446-5.143M2 2l20 20',
+ user:'M12 12a4 4 0 100-8 4 4 0 000 8zM4 21a8 8 0 0116 0',
+ x:'M18 6L6 18M6 6l12 12',
+ feedback:'M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z',
+ github:'M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22',
  caixa:'M4 5h16v14H4zM4 10h16M8 15h4',cripto:'M9 8h5a2.5 2.5 0 010 5H9zM9 13h6a2.5 2.5 0 010 5H9zM9 6v14M12 6V4M12 20v-2',
  cambio:'M4 8h13l-3-3M20 16H7l3 3',casa:'M3 11l9-7 9 7v9H3zM9 20v-6h6v6',agenda:'M4 5h16v15H4zM4 10h16M9 3v4M15 3v4M8 14h2M12 14h2',
  predio:'M4 21V5l8-2v18M12 9h8v12M7 8h2M7 12h2M7 16h2M15 13h2M15 17h2',carro:'M5 17h14M6 17l1.5-6h9L18 17M7 11l1-4h8l1 4M8 21v-2M16 21v-2',
@@ -15,7 +24,7 @@ const ICON={
 const ST={ok:['ok','Disponível'],beta:['beta','Beta'],lab:['lab','Experimental']};
 const CAT_H={'Finanças':212,'Casa':18,'Negócios':328,'Identidade':186};
 
-let SUP={},supTab='pix',supAmt=10,APPS=[],status='loading',store=null,me=null,NAMES={},deferredInstall=null,swWaiting=null,isAdmin=false,assets=null,RV={},REP={},myId=null,userNS=null,myRevDoc=null,tabApp=null,rvApp=null,rvStars=0,pendingRender=false;
+let SUP={},SUGS=[],supTab='pix',supAmt=10,APPS=[],status='loading',store=null,me=null,NAMES={},deferredInstall=null,swWaiting=null,isAdmin=false,assets=null,RV={},REP={},myId=null,userNS=null,myRevDoc=null,tabApp=null,rvApp=null,rvStars=0,pendingRender=false;
 let favs=local.get('favs',[]),rates=local.get('rates',{}),cat=null,q='',tab='geral',auto=null,draft=null,lastDel=null;
 const pub=()=>APPS.filter(a=>a.visible!==false);
 const byId=id=>APPS.find(a=>a.id===id);
@@ -41,7 +50,7 @@ const svg=(p,c)=>'<svg'+(c?' class="'+c+'"':'')+' viewBox="0 0 24 24"><path d="'
 const okId=id=>typeof id==='string'&&/^[A-Za-z0-9_-]{6,64}$/.test(id);
 const BLANKGIF='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 const imgEl=(id,alt)=>'<img data-img="'+esc(id)+'" alt="'+esc(alt||'')+'" src="'+BLANKGIF+'">';
-const aico=(a,s)=>{const pv=a._preview,id=okId(a.imgId)?a.imgId:'';return '<span class="aico'+(pv||id?' img':'')+'" style="--h:'+(+a.h||0)+(s?';--s:'+s+'px':'')+'" aria-hidden="true">'+(pv?'<img src="'+esc(pv)+'" alt="">':id?imgEl(id,''):svg(ICON[a.ic]))+'</span>'};
+const aico=(a,s)=>{if(!a)return'';const pv=a._preview,b64=a.iconBase64,id=okId(a.imgId)?a.imgId:'';const hasImg=pv||b64||id;return '<span class="aico'+(hasImg?' img':'')+'" style="--h:'+(+a.h||0)+(s?';--s:'+s+'px':'')+'" aria-hidden="true">'+(pv?'<img src="'+esc(pv)+'" alt="">':b64?'<img src="'+esc(b64)+'" alt="">':id?imgEl(id,''):svg(ICON[a.ic]||ICON.loja))+'</span>'};
 function hydrate(root){if(!store)return;(root||document).querySelectorAll('img[data-img]:not([data-done])').forEach(im=>{im.dataset.done='1';store.getImage(im.dataset.img).then(u=>{if(u)im.src=u}).catch(()=>{})})}
 new MutationObserver(()=>hydrate()).observe(document.body,{childList:true,subtree:true});
 const mini=a=>'<button class="mini" data-app="'+esc(a.id)+'">'+aico(a,60)+'<span class="t"><b>'+esc(a.name)+(isRecent(a)?'<span class="tag new">Atualizado</span>':'')+'</b><small>'+((RV[a.id]||[]).length?'★ '+fmt1(avg(a.id))+' · ':'')+esc(a.short)+'</small></span><span class="get">'+(a.status==='ok'?'Abrir':'Ver')+'</span></button>';
@@ -89,7 +98,9 @@ const V={
   '<section class="banner" style="--h:'+(+a.h||0)+'"><span class="beam"></span><div class="hd">'+aico(a)+'<div><h2>'+esc(a.name)+'</h2><span class="dev">Systekna</span><br><span class="badge '+(ST[a.status]||ST.ok)[0]+'"><i></i>'+(ST[a.status]||ST.ok)[1]+'</span>'+(isRecent(a)?' <span class="badge beta"><i></i>Atualizado</span>':'')+'</div></div>'+
   '<div class="cta"><button class="bopen" id="openB">'+(a.status==='ok'?'Abrir app':'Testar versão '+(ST[a.status]||ST.ok)[1].toLowerCase())+'</button><button class="bfav" id="favB" aria-pressed="'+fav+'" aria-label="'+(fav?'Remover dos favoritos':'Adicionar aos favoritos')+'">'+svg(ICON.coracao,'i')+'</button></div>'+
   '<div class="facts"><div><b>'+((RV[a.id]||[]).length?'★ '+fmt1(avg(a.id)):'—')+'</b><small>'+((RV[a.id]||[]).length?(RV[a.id].length+(RV[a.id].length>1?' avaliações':' avaliação')):'Sem avaliações')+'</small></div><div><b>Web · PWA</b><small>Plataforma</small></div><div><b>'+esc(a.version||'—')+'</b><small>Versão</small></div></div></section>'+
-  '<div class="acts2"><button class="btn sec" data-share-app="'+esc(a.id)+'">'+svg('M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v14','i')+'Compartilhar</button><button class="btn sec" data-nav="apoiar">'+svg(ICON.coracao,'i')+'Apoiar</button></div>'+
+  '<div class="acts2">'+
+ (a.repoUrl?'<a class="btn sec" href="'+esc(a.repoUrl)+'" target="_blank" rel="noopener">'+svg(ICON.github,'i')+'GitHub</a>':'')+
+ '<button class="btn sec" data-share-app="'+esc(a.id)+'">'+svg('M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v14','i')+'Compartilhar</button><button class="btn sec" data-nav="apoiar">'+svg(ICON.coracao,'i')+'Apoiar</button></div>'+
   (isAdmin?'<button class="btn sec full" style="margin-top:12px" data-nav="editar-'+esc(a.id)+'">'+svg('M4 20h4L19 9l-4-4L4 16zM14 6l4 4','i')+'Editar este app</button>':'')+
   '<div class="tabs" role="tablist" id="tabs"><span class="ind" id="tind"></span><button role="tab" data-t="geral">Visão geral</button><button role="tab" data-t="priv">Privacidade</button><button role="tab" data-t="aval">Avaliações</button></div><div id="panel"></div>',
   after(){$('favB').onclick=()=>{const on=favs.includes(a.id);favs=on?favs.filter(x=>x!==a.id):favs.concat(a.id);local.set('favs',favs);$('favB').setAttribute('aria-pressed',!on);toast(on?'Removido da biblioteca':'Guardado na biblioteca')};
@@ -112,12 +123,62 @@ const V={
   after(){if(!ok)return;const draw=()=>{$('supBox').innerHTML=supTab==='pix'?pixBox():btcBox();bindSupBox()};
    if($('supSeg'))$('supSeg').onclick=e=>{const b=e.target.closest('[data-st]');if(!b)return;supTab=b.dataset.st;$('supSeg').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));draw()};draw()}}},
  conta(){const demo=store&&store.mode==='demo';
-  if(!me)return{eyebrow:'Sua conta',title:'Entrar',sub:true,html:'<div class="glass about"><span class="mark" style="display:grid">'+svg('M12 12a4 4 0 100-8 4 4 0 000 8zM4 21a8 8 0 0116 0','i')+'</span><h2>Entre na Loja Systekna</h2><p>Com a sua conta Google você avalia apps e guarda suas opiniões. Ver e abrir os apps não exige login.</p><button class="btn" data-signin style="margin-top:16px">'+svg('M21 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.1a4.4 4.4 0 01-1.9 2.9v2.4h3.1c1.8-1.7 2.7-4.1 2.7-7.1zM12 21c2.6 0 4.7-.9 6.3-2.3l-3.1-2.4c-.8.6-1.9.9-3.2.9-2.5 0-4.6-1.7-5.3-3.9H3.5v2.5A9.5 9.5 0 0012 21z','i')+'Entrar com Google</button></div>'};
-  return{eyebrow:demo?'Modo demonstração':'Sua conta',title:'Minha conta',sub:true,html:'<div class="glass about">'+(me.photo&&/^https:\/\//.test(me.photo)?'<img src="'+esc(me.photo)+'" alt="" style="width:72px;height:72px;border-radius:50%;margin:0 auto 12px;display:block">':'<span class="mark" style="display:grid">'+svg('M12 12a4 4 0 100-8 4 4 0 000 8zM4 21a8 8 0 0116 0','i')+'</span>')+'<h2>'+esc(me.name||'Visitante')+'</h2>'+(me.email?'<p>'+esc(me.email)+'</p>':'')+(isAdmin?'<p><span class="tag star">Administrador</span></p>':'')+
-   (demo?'<p style="margin-top:12px">Você está no modo demonstração: os dados ficam só neste aparelho e você é o administrador. Configure o Firebase em <code>js/config.js</code> para publicar de verdade.</p>':'<button class="btn sec" id="outB" style="margin-top:16px">Sair da conta</button>')+'</div>'+
-   (demo?'<div class="shelf-h"><div><h2>Dados da demonstração</h2></div></div><div class="glass fsec" style="margin-top:0"><button class="btn sec full" id="seedDemo">Restaurar catálogo de exemplo</button><button class="btn danger full" id="resetDemo">Apagar tudo e recomeçar</button></div>':''),
+  if(!me)return{eyebrow:'Autenticação',title:'Minha conta',sub:true,html:
+   '<div class="glass about" style="text-align:left;max-width:440px;margin:0 auto">'+
+   '<div style="text-align:center"><span class="mark" style="display:inline-grid;margin:0 auto 12px">'+svg(ICON.escudo,'i')+'</span>'+
+   '<h2>Entre na Loja Systekna</h2><p style="color:var(--soft);font-size:14px">Acesse como Administrador para gerenciar os apps ou como Visitante para avaliar.</p></div>'+
+   '<div class="feed-box" style="margin-top:14px;background:var(--surface)">'+
+   '<b style="font-size:15px;display:flex;align-items:center;gap:6px">'+svg(ICON.lock,'i')+'Acesso do Gestor / Administrador</b>'+
+   '<div class="fld"><span class="lbl"><span>E-mail</span></span><input type="email" id="authEmail" placeholder="admin@systekna.com.br" value="admin@systekna.com.br"></div>'+
+   '<div class="fld"><span class="lbl"><span>PIN ou Senha</span></span>'+
+   '<div class="pass-box"><input type="password" id="authPass" placeholder="Digite o PIN (ex: 123456)"><button type="button" class="pass-btn" id="passToggle" aria-label="Mostrar senha">'+svg(ICON.eye)+'</button></div></div>'+
+   '<button class="btn full" id="authBtn" style="margin-top:6px">'+svg(ICON.lock,'i')+'Entrar como Administrador</button>'+
+   '</div>'+
+   '<div class="feed-box" style="margin-top:12px;background:var(--surface)">'+
+   '<b style="font-size:15px;display:flex;align-items:center;gap:6px">'+svg(ICON.user,'i')+'Acesso Rápido de Visitante</b>'+
+   '<p style="color:var(--soft);font-size:13px;margin:0">Avalie e favorite apps informando apenas seu nome ou apelido:</p>'+
+   '<div class="fld"><input type="text" id="guestName" placeholder="Seu nome ou apelido" maxlength="30"></div>'+
+   '<button class="btn sec full" id="guestBtn">'+svg(ICON.user,'i')+'Entrar como Visitante</button>'+
+   '</div>'+
+   '<div style="text-align:center;margin-top:16px"><p style="font-size:12px;color:var(--faint);margin-bottom:8px">Ou use autenticação Google federada:</p>'+
+   '<button class="btn sec full" data-signin>'+svg('M21 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.1a4.4 4.4 0 01-1.9 2.9v2.4h3.1c1.8-1.7 2.7-4.1 2.7-7.1zM12 21c2.6 0 4.7-.9 6.3-2.3l-3.1-2.4c-.8.6-1.9.9-3.2.9-2.5 0-4.6-1.7-5.3-3.9H3.5v2.5A9.5 9.5 0 0012 21z','i')+'Entrar com Google</button></div></div>',
+   after(){
+     const pIn=$('authPass'),pBtn=$('passToggle');
+     if(pBtn&&pIn){
+       pBtn.onclick=()=>{
+         const isPass=pIn.type==='password';
+         pIn.type=isPass?'text':'password';
+         pBtn.setAttribute('aria-label',isPass?'Ocultar senha':'Mostrar senha');
+         pBtn.innerHTML=svg(isPass?ICON.eyeOff:ICON.eye);
+       };
+     }
+     if($('authBtn'))$('authBtn').onclick=async()=>{
+       const email=($('authEmail').value||'').trim(),pass=($('authPass').value||'').trim();
+       if(!pass){toast('Informe o PIN ou senha');return}
+       $('authBtn').disabled=true;
+       try{
+         await store.signInWithCredentials(email,pass);
+         toast('Autenticado com sucesso!');
+         if(isAdmin)location.hash='#gestao';else render(true);
+       }catch(e){
+         toast('Falha na autenticação: '+(e&&e.message||'Credenciais incorretas'));
+         $('authBtn').disabled=false;
+       }
+     };
+     if($('guestBtn'))$('guestBtn').onclick=async()=>{
+       const n=($('guestName').value||'').trim();
+       if(n.length<2){toast('Informe ao menos 2 letras');return}
+       await store.signInAsGuest(n);
+       toast('Bem-vindo, '+n+'!');
+       render(true);
+     };
+   }};
+  return{eyebrow:demo?'Modo local-first':'Sua conta',title:'Minha conta',sub:true,html:'<div class="glass about">'+(me.photo&&/^https:\/\//.test(me.photo)?'<img src="'+esc(me.photo)+'" alt="" style="width:72px;height:72px;border-radius:50%;margin:0 auto 12px;display:block">':'<span class="mark" style="display:grid">'+svg(ICON.user,'i')+'</span>')+'<h2>'+esc(me.name||'Usuário')+'</h2>'+(me.email?'<p>'+esc(me.email)+'</p>':'')+'<p><span class="badge '+(isAdmin?'beta':'ok')+'"><i></i>'+(isAdmin?'Administrador':'Visitante')+'</span></p>'+
+   (demo?'<p style="margin-top:12px;font-size:13px;color:var(--soft)">Você está no modo demonstração/local-first: dados persistidos no navegador.</p>':'')+
+   '<div class="mrow" style="margin-top:18px"><button class="btn sec" id="outB">Sair da conta</button>'+(isAdmin?'<button class="btn" data-nav="gestao">Abrir Gestão</button>':'')+'</div></div>'+
+   (demo&&isAdmin?'<div class="shelf-h"><div><h2>Dados da demonstração</h2></div></div><div class="glass fsec" style="margin-top:0"><button class="btn sec full" id="seedDemo">Restaurar catálogo inicial</button><button class="btn danger full" id="resetDemo">Apagar tudo e recomeçar</button></div>':''),
    after(){if($('outB'))$('outB').onclick=async()=>{await store.signOut();toast('Você saiu da conta');go('inicio')};
-    if($('seedDemo'))$('seedDemo').onclick=async()=>{await store.seed();toast('Catálogo de exemplo restaurado')};
+    if($('seedDemo'))$('seedDemo').onclick=async()=>{await store.seed();toast('Catálogo inicial restaurado')};
     if($('resetDemo'))$('resetDemo').onclick=()=>confirmBox('Apagar a demonstração?','Catálogo, imagens e avaliações deste aparelho serão apagados.','Apagar',async()=>{await store.resetDemo();location.hash='';location.reload()})}}},
 
  /* ---------- GESTÃO ---------- */
@@ -133,8 +194,32 @@ const V={
     '<button class="sw" role="switch" data-vis="'+esc(a.id)+'" aria-checked="'+(a.visible!==false)+'" aria-label="Publicado na loja"></button></span></div>').join('')+'</div>':
    '<div class="glass state"><b>Catálogo vazio</b><p>Cadastre o primeiro app ou importe o catálogo inicial da Systekna.</p><button class="btn sec" id="seedB" style="margin-top:8px">Importar catálogo inicial</button></div>')+
   (()=>{const L=[];Object.keys(RV).forEach(k=>{const ap=byId(k);if(ap)RV[k].forEach(r=>L.push(Object.assign({app:ap},r)))});L.sort((x,y)=>String(y.at).localeCompare(String(x.at)));const pend=L.filter(r=>!replied(r.uid,r.app.id)).length;
-   return '<div class="shelf-h"><div><h2>Avaliações recentes</h2><p>'+(L.length?(pend?pend+' sem resposta':'Todas respondidas'):'Nenhuma avaliação ainda')+'</p></div></div>'+(L.length?'<div class="glass list">'+L.slice(0,12).map(r=>{const done=replied(r.uid,r.app.id);return '<button class="arow rvrow" data-rvgo="'+esc(r.app.id)+'">'+aico(r.app,40)+'<span class="t"><b>'+esc(r.app.name)+'</b><small>'+sline(r.stars)+'<span>'+dbr(r.at)+'</span></small>'+(r.text?'<small style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">'+esc(r.text)+'</small>':'')+'</span><span class="tag '+(done?'ok':'lab')+'">'+(done?'Respondida':'Responder')+'</span></button>'}).join('')+'</div>':'')})()+supportAdmin(),
-  after(){bindSupportAdmin();if($('seedB'))$('seedB').onclick=async()=>{$('seedB').disabled=true;try{await store.seed();toast('Catálogo inicial importado')}catch(err){toast(errMsg(err));$('seedB').disabled=false}};
+   return '<div class="shelf-h"><div><h2>Avaliações recentes</h2><p>'+(L.length?(pend?pend+' sem resposta':'Todas respondidas'):'Nenhuma avaliação ainda')+'</p></div></div>'+(L.length?'<div class="glass list">'+L.slice(0,12).map(r=>{const done=replied(r.uid,r.app.id);return '<button class="arow rvrow" data-rvgo="'+esc(r.app.id)+'">'+aico(r.app,40)+'<span class="t"><b>'+esc(r.app.name)+'</b><small>'+sline(r.stars)+'<span>'+dbr(r.at)+'</span></small>'+(r.text?'<small style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">'+esc(r.text)+'</small>':'')+'</span><span class="tag '+(done?'ok':'lab')+'">'+(done?'Respondida':'Responder')+'</span></button>'}).join('')+'</div>':'')})()+(()=>{
+    const L=SUGS.slice().sort((x,y)=>String(y.criadoEm||y.at||'').localeCompare(String(x.criadoEm||x.at||'')));
+    const pend=L.filter(s=>!s.lida).length;
+    return '<div class="shelf-h"><div><h2>Sugestões e Feedbacks (Base da Systekna)</h2><p>'+(L.length?(pend?pend+' não lida(s)':'Todas marcadas como lidas'):'Nenhuma sugestão recebida ainda')+'</p></div></div>'+
+     (L.length?'<div class="glass list" id="sugList">'+L.slice(0,16).map(s=>{
+       const ap=byId(s.app)||{name:s.app||"Geral"};
+       return '<div class="arow" style="align-items:flex-start;padding:12px 14px;gap:12px">'+
+         '<div style="flex:1;min-width:0"><b>'+esc(ap.name)+'</b> <span class="tag '+(s.tipo||'sugestao')+'">'+esc(s.tipo||'sugestão')+'</span>'+
+         (s.lida?'':' <span class="tag lab">Nova</span>')+
+         '<p style="margin:4px 0;font-size:13px;color:var(--ink)">'+esc(s.texto)+'</p>'+
+         '<small style="color:var(--faint)">'+dbr(s.criadoEm||s.at)+(s.email?' · '+esc(s.email):'')+'</small></div>'+
+         '<div class="ctl" style="flex-direction:column;gap:6px">'+
+         '<button class="btn sec" style="height:32px;padding:0 10px;font-size:12px" data-sug-lida="'+esc(s.id)+'">'+(s.lida?'Não lida':'Lida')+'</button>'+
+         '<button class="mini-b" data-sug-del="'+esc(s.id)+'" aria-label="Excluir">'+svg(ICON.x,'i')+'</button></div>'+
+         '</div>';
+     }).join('')+'</div>':'');
+  })()+supportAdmin(),
+  after(){bindSupportAdmin();
+   const SL=$('sugList');if(SL){
+     SL.onclick=async e=>{
+       const bL=e.target.closest('[data-sug-lida]');
+       if(bL){const id=bL.dataset.sugLida,s=SUGS.find(x=>x.id===id);if(s){await store.updateSuggestion(id,{lida:!s.lida});toast(s.lida?'Marcada como não lida':'Marcada como lida')}return}
+       const bD=e.target.closest('[data-sug-del]');
+       if(bD){const id=bD.dataset.sugDel;confirmBox('Excluir sugestão?','Esta mensagem será apagada permanentemente.','Excluir',async()=>{await store.deleteSuggestion(id);toast('Sugestão excluída')})}
+     };
+   };if($('seedB'))$('seedB').onclick=async()=>{$('seedB').disabled=true;try{await store.seed();toast('Catálogo inicial importado')}catch(err){toast(errMsg(err));$('seedB').disabled=false}};
    const L=$('alist');if(!L)return;L.onclick=async e=>{
     const v=e.target.closest('[data-vis]');if(v){const a=byId(v.dataset.vis),nv=a.visible===false;v.setAttribute('aria-checked',nv);v.disabled=true;
       try{await store.updateApp(a.id,{visible:nv,updatedAt:new Date().toISOString()});toast(nv?a.name+' publicado':a.name+' oculto da loja')}catch(err){v.setAttribute('aria-checked',!nv);toast(errMsg(err))}v.disabled=false;return}
@@ -227,7 +312,8 @@ function form(a){if(!isAdmin)return noAccess();
    fld('feats','Recursos <span class="hint">(um por linha)</span>','<textarea id="i-feats" placeholder="Lançamentos com categorias&#10;Modo claro e escuro">'+esc(draft.feats.join('\n'))+'</textarea>')+
    fld('data','Onde ficam os dados','<input type="text" id="i-data" maxlength="60" value="'+esc(draft.data)+'" placeholder="Ex.: Fica no aparelho">')+'</section>'+
   '<section class="glass fsec"><h3>Publicação<small>Link, versão e novidades</small></h3>'+
-   fld('url','Link do app','<input type="url" id="i-url" value="'+esc(draft.url)+'" placeholder="https://celsoalmeidalf.github.io/livro-caixa/" autocomplete="off" inputmode="url"><span class="err">Use um endereço que comece com https://</span>')+
+   fld('url','Link do app (PWA / Web)','<input type="url" id="i-url" value="'+esc(draft.url)+'" placeholder="https://celsoalmeidalf.github.io/livro-caixa/" autocomplete="off" inputmode="url"><span class="err">Use um endereço que comece com https://</span>')+
+   fld('repoUrl','Repositório no GitHub','<input type="url" id="i-repoUrl" value="'+esc(draft.repoUrl||'')+'" placeholder="https://github.com/CelsoAlmeidaLF/..." autocomplete="off">')+
    '<div class="pair">'+fld('version','Versão','<input type="text" id="i-version" maxlength="16" value="'+esc(draft.version)+'" placeholder="Ex.: 1.2.0">')+'<div class="fld"><span class="lbl"><span>Na loja</span></span><div class="togrow" style="min-height:46px"><span>Publicado<small>Visível para todos</small></span><button type="button" class="sw" role="switch" id="i-visible" aria-checked="'+(draft.visible!==false)+'" aria-label="Publicado na loja"></button></div></div></div>'+
    fld('news','Novidades desta versão','<textarea id="i-news" maxlength="600" placeholder="O que mudou nesta versão">'+esc(draft.news)+'</textarea>')+'</section>'+
   '<section class="glass fsec"><h3>Destaque<small>Card grande no carrossel da página inicial</small></h3>'+
@@ -280,7 +366,7 @@ function bindForm(isNew,orig){const F=$('af');
     if($('i-cat').value==='__nova')bad('newcat',!draft.cat);
     bad('url',!!draft.url&&!/^https:\/\/[^\s.]+\.[^\s]+$/.test(draft.url));
     if(!ok)return;if(!draft.cat)draft.cat='Outros';
-    const body={name:draft.name,short:draft.short,cat:draft.cat,status:draft.status,desc:draft.desc.trim(),feats:draft.feats,url:draft.url,data:draft.data.trim(),h:+draft.h,ic:draft.ic,
+    const body={name:draft.name,short:draft.short,cat:draft.cat,status:draft.status,desc:draft.desc.trim(),feats:draft.feats,url:draft.url,repoUrl:(draft.repoUrl||'').trim(),iconBase64:draft.iconBase64||'',data:draft.data.trim(),h:+draft.h,ic:draft.ic,
       version:draft.version.trim(),news:draft.news.trim(),visible:draft.visible!==false,featured:!!draft.featured,storyTitle:draft.storyTitle.trim(),storyText:draft.storyText.trim(),updatedAt:new Date().toISOString()};
     let id=orig&&orig.id;
     if(isNew){let base=slug(draft.name),n=2;id=base;while(byId(id))id=base+'-'+(n++);body.order=APPS.reduce((m,x)=>Math.max(m,+x.order||0),0)+1}else body.order=orig.order;
@@ -288,7 +374,7 @@ function bindForm(isNew,orig){const F=$('af');
     let newImg=draft.imgId||'';
     if(draft._blob){if(!assets){toast('Envio de imagem indisponível');$('saveB').disabled=false;$('saveB').textContent=isNew?'Cadastrar app':'Salvar alterações';return}
       $('saveB').textContent='Enviando imagem…';
-      try{const up=await assets.upload(draft._blob,{type:'image/png'});newImg=up.id}catch(err){const c=err&&err.code;toast(c==='too_large'?'Imagem grande demais':c==='quota_or_state'?'Espaço de imagens esgotado':'Não foi possível enviar a imagem');$('saveB').disabled=false;$('saveB').textContent=isNew?'Cadastrar app':'Salvar alterações';return}
+      try{const up=await assets.upload(draft._blob,{type:'image/png'});newImg=up.id;try{const r=new FileReader();r.onload=()=>{body.iconBase64=r.result};r.readAsDataURL(draft._blob)}catch(_){}}catch(err){const c=err&&err.code;toast(c==='too_large'?'Imagem grande demais':c==='quota_or_state'?'Espaço de imagens esgotado':'Não foi possível enviar a imagem');$('saveB').disabled=false;$('saveB').textContent=isNew?'Cadastrar app':'Salvar alterações';return}
       $('saveB').textContent='Salvando…'}
     body.imgId=newImg;
     const shotsOut=[];for(const x of draft.shots){if(x.id){shotsOut.push({id:x.id});continue}
@@ -317,7 +403,12 @@ function panel(a){const i=['geral','priv','aval'].indexOf(tab);$('tind').style.t
    if(rvApp!==a.id){rvStars=mine?mine.stars:0;rvApp=a.id}
    const dist=[5,4,3,2,1].map(k=>[k,L.filter(r=>r.stars===k).length]);
    h='<div class="glass rsum"><div><div class="big">'+(n?fmt1(av):'—')+'</div>'+sline(av)+'<div class="sm">'+(n?n+(n>1?' avaliações':' avaliação'):'Sem avaliações ainda')+'</div></div><div class="bars">'+dist.map(([k,c])=>'<div><span>'+k+'</span><i><b style="width:'+(n?c/n*100:0)+'%"></b></i><span>'+c+'</span></div>').join('')+'</div></div>'+
-    (myId&&store?'<div class="glass compose"><h3>'+(mine?'Sua avaliação':'Avalie este app')+'</h3><div class="stars" id="stars">'+[1,2,3,4,5].map(k=>'<button data-r="'+k+'" class="'+(rvStars>=k?'on':'')+'" aria-label="'+k+' estrela'+(k>1?'s':'')+'"><svg viewBox="0 0 24 24"><path d="'+STAR+'"/></svg></button>').join('')+'</div><textarea id="rvT" maxlength="500" placeholder="Conte o que achou (opcional)" aria-label="Comentário">'+esc(mine?mine.text:'')+'</textarea><div class="row2">'+(mine?'<button class="btn sec" id="rvDel">Excluir</button>':'')+'<button class="btn" id="rvPub">'+(mine?'Atualizar':'Publicar avaliação')+'</button></div></div>':'<div class="ro" style="margin-top:12px">Para avaliar, entre com a sua conta Google.<br><button class="btn" data-signin style="margin-top:10px">Entrar com Google</button></div>')+
+    (myId&&store?'<div class="glass compose"><h3>'+(mine?'Sua avaliação':'Avalie este app')+'</h3><div class="stars" id="stars">'+[1,2,3,4,5].map(k=>'<button data-r="'+k+'" class="'+(rvStars>=k?'on':'')+'" aria-label="'+k+' estrela'+(k>1?'s':'')+'"><svg viewBox="0 0 24 24"><path d="'+STAR+'"/></svg></button>').join('')+'</div><textarea id="rvT" maxlength="500" placeholder="Conte o que achou (opcional)" aria-label="Comentário">'+esc(mine?mine.text:'')+'</textarea><div class="row2">'+(mine?'<button class="btn sec" id="rvDel">Excluir</button>':'')+'<button class="btn" id="rvPub">'+(mine?'Atualizar':'Publicar avaliação')+'</button></div></div>':'<div class="ro" style="margin-top:12px">Para avaliar, entre com sua conta.<br><button class="btn" data-nav="conta" style="margin-top:10px">Entrar na conta</button></div>')+'+
+ '<div class="glass feed-box"><h3>'+svg(ICON.feedback,'i')+'Enviar sugestão ou relatar problema</h3><p style="color:var(--soft);font-size:13px;margin:0">Envie ideias, sugestões ou relate falhas diretamente para a equipe.</p>'+
+ '<div class="feed-seg" id="feedTipo"><button type="button" data-tp="sugestao" aria-pressed="true">💡 Sugestão</button><button type="button" data-tp="problema" aria-pressed="false">⚠️ Problema</button><button type="button" data-tp="elogio" aria-pressed="false">⭐ Elogio</button></div>'+
+ '<textarea id="feedTxt" maxlength="1000" placeholder="Escreva aqui seu comentário ou problema (mínimo de 3 caracteres)..." style="min-height:76px"></textarea>'+
+ '<input type="email" id="feedMail" placeholder="Seu e-mail para contato (opcional)" value="'+esc(me&&me.email||'')+'">'+
+ '<button class="btn" id="feedSend">Enviar para o desenvolvedor</button></div>'+
     (n?'<div class="shelf-h"><div><h2>Comentários</h2></div></div><div class="glass list" id="rvList">'+L.map(r=>{const rp=REP[r.uid]&&REP[r.uid][a.id];return '<div class="rv"><div class="who"><img alt="" data-av="'+esc(r.uid)+'" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><span><b data-nm="'+esc(r.uid)+'">'+(r.uid===myId?'Você':'Visitante')+'</b><small>'+dbr(r.at)+'</small></span></div>'+sline(r.stars)+(r.text?'<p>'+esc(r.text)+'</p>':'')+(rp&&rp.text?'<div class="reply"><b>Resposta da Systekna</b><p>'+esc(rp.text)+'</p></div>':'')+(isAdmin?'<button class="rbtn" data-rep="'+esc(r.uid)+'">'+(rp&&rp.text?'Editar resposta':'Responder')+'</button>':'')+'</div>'}).join('')+'</div>':'')}
   $('panel').innerHTML='<div class="panel">'+h+'</div>';
   if(tab==='geral'&&S.length)$('panel').querySelectorAll('[data-shot]').forEach(b=>b.onclick=()=>openLB(S,+b.dataset.shot));
@@ -325,7 +416,20 @@ function panel(a){const i=['geral','priv','aval'].indexOf(tab);$('tind').style.t
    if($('stars'))$('stars').onclick=e=>{const b=e.target.closest('button');if(!b)return;rvStars=+b.dataset.r;$('stars').querySelectorAll('button').forEach(x=>x.classList.toggle('on',+x.dataset.r<=rvStars))};
    if($('rvPub'))$('rvPub').onclick=()=>saveReview(a);
    if($('rvDel'))$('rvDel').onclick=()=>confirmBox('Excluir sua avaliação?','Sua nota e seu comentário saem deste app.','Excluir',()=>saveReview(a,true));
-   const RL=$('rvList');if(RL){fillNames(RL);RL.onclick=e=>{const b=e.target.closest('[data-rep]');if(b)openReply(a,b)}}}}
+   const RL=$('rvList');if(RL){fillNames(RL);RL.onclick=e=>{const b=e.target.closest('[data-rep]');if(b)openReply(a,b)}};
+   let feedTp='sugestao';const fSeg=$('feedTipo');
+   if(fSeg)fSeg.onclick=e=>{const b=e.target.closest('[data-tp]');if(!b)return;feedTp=b.dataset.tp;fSeg.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))};
+   if($('feedSend'))$('feedSend').onclick=async()=>{
+     const txt=(($('feedTxt')||{}).value||'').trim(),mail=(($('feedMail')||{}).value||'').trim();
+     if(txt.length<3){toast('Escreva ao menos 3 caracteres');return}
+     $('feedSend').disabled=true;
+     try{
+       await store.addSuggestion({app:a.id,tipo:feedTp,texto:txt,email:mail});
+       toast('Sugestão enviada com sucesso! Obrigado.');
+       $('feedTxt').value='';
+     }catch(err){toast('Erro ao enviar: '+errMsg(err))}
+     $('feedSend').disabled=false;
+   }}}
 function fillNames(el){el.querySelectorAll('[data-nm]').forEach(x=>{const p=NAMES[x.dataset.nm]||{};x.textContent=x.dataset.nm===myId?((p.name||'Você')+' (você)'):(p.name||'Visitante')});
   el.querySelectorAll('[data-av]').forEach(x=>{const p=NAMES[x.dataset.av];if(p&&/^https:\/\//.test(p.photo||''))x.src=p.photo})}
 async function saveReview(a,del){if(!myId||!store)return;const txt=(($('rvT')||{}).value||'').trim().slice(0,500);
@@ -429,6 +533,7 @@ render(true);
     RV=m;NAMES=nm;myRevDoc=mine;safeRender()},()=>{});
   store.onSettings(d=>{SUP=d||{};safeRender()},()=>{});
   store.onReplies(list=>{const m={};list.forEach(d=>{m[d.id]=d.apps||{}});REP=m;safeRender()},()=>{});
+  store.onSuggestions(list=>{SUGS=list||[];safeRender()},()=>{});
   hydrate();
 })();
 })();

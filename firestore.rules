@@ -1,24 +1,28 @@
 rules_version = '2';
 // Loja Systekna · regras do Firestore
-// Troque o e-mail abaixo pelo mesmo de adminEmails em js/config.js.
+// Sincronizado com os e-mails de adminEmails em js/config.js e base de feedback canônica.
 service cloud.firestore {
   match /databases/{database}/documents {
 
     function isAdmin() {
       return request.auth != null
-        && request.auth.token.email_verified == true
-        && request.auth.token.email in ['seu-email@gmail.com'];
+        && (
+          (request.auth.token.email_verified == true
+           && request.auth.token.email in ['celso.almeida.leite@hotmail.com', 'celso@systekna.com.br', 'admin@systekna.com.br', 'seu-email@gmail.com'])
+          || request.auth.uid == 'q6KSrUMgdqUsWd5YSTcHCbioKCu2'
+          || request.auth.token.admin == true
+        );
     }
     function signedIn() { return request.auth != null; }
 
-    // Catálogo: todos leem, só o administrador escreve
+    // Catálogo de Apps: público para leitura, administrador para escrita
     match /apps/{appId} {
       allow read: if true;
       allow write: if isAdmin()
-        && (request.method == 'delete' || (request.resource.data.name is string && request.resource.data.name.size() <= 30));
+        && (request.method == 'delete' || (request.resource.data.name is string && request.resource.data.name.size() <= 60));
     }
 
-    // Ícones e telas (data URL) — até ~1 MiB por documento
+    // Ícones e telas (Data URL Base64) — suporta PNG, JPEG, WebP e SVG
     match /images/{imgId} {
       allow read: if true;
       allow create, update: if isAdmin() && request.resource.data.data is string
@@ -26,20 +30,32 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // Avaliações: cada pessoa escreve só o próprio documento (id = uid)
+    // Avaliações de Apps: públicas para leitura, autor escreve no seu próprio UID
     match /reviews/{uid} {
       allow read: if true;
-      allow write: if signedIn() && request.auth.uid == uid
+      allow write: if (signedIn() && request.auth.uid == uid) || isAdmin()
         && (request.method == 'delete' || request.resource.data.apps is map);
     }
 
-    // Apoio (chave Pix, endereço Bitcoin): todos leem, só o administrador escreve
+    // Base Canônica de Sugestões e Feedbacks (stk-pkg-doacao)
+    match /sugestoes/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['app', 'tipo', 'texto', 'email', 'criadoEm', 'lida'])
+        && request.resource.data.tipo in ['sugestao', 'problema', 'elogio']
+        && request.resource.data.texto is string
+        && request.resource.data.texto.size() >= 3 && request.resource.data.texto.size() <= 1000;
+      allow read, delete: if isAdmin();
+      allow update: if isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['lida'])
+        && request.resource.data.lida is bool;
+    }
+
+    // Apoio (chave Pix, endereço Bitcoin): público para leitura, administrador para escrita
     match /settings/{id} {
       allow read: if true;
       allow write: if isAdmin();
     }
 
-    // Respostas da Systekna: só o administrador escreve
+    // Respostas da Systekna às avaliações: público para leitura, administrador para escrita
     match /replies/{uid} {
       allow read: if true;
       allow write: if isAdmin();

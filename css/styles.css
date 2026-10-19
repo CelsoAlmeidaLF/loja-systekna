@@ -435,3 +435,21 @@ body,.glass,.banner,.tile,.dock,.search,.mini .t{transition:background-color .35
 .codebox{padding:12px 14px;border-radius:12px;background:var(--surface-2);font:12px/1.5 var(--mono);color:var(--ink);overflow-wrap:anywhere;user-select:all;max-height:96px;overflow:auto}
 .note2{margin:0;font-size:12px;color:var(--faint);text-align:center}
 .sup-card .sup-ic{width:52px;height:52px}
+
+/* Autenticação e Toggle de Senha (AGENTS.md Regra 3) */
+.pass-box{position:relative;display:flex;align-items:center;width:100%}
+.pass-box input{width:100%;padding-right:48px!important}
+.pass-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;background:none;color:var(--soft);cursor:pointer;display:grid;place-items:center;border-radius:8px;transition:color .2s}
+.pass-btn:hover{color:var(--ink);background:var(--surface-2)}
+.pass-btn svg{width:20px;height:20px}
+
+/* Tags de Feedback (Systekna Canonical) */
+.tag.sugestao{background:rgba(59,130,246,.15);color:#3B82F6}
+.tag.problema{background:rgba(239,68,68,.15);color:#EF4444}
+.tag.elogio{background:rgba(34,197,94,.15);color:#22C55E}
+
+/* Card de Sugestões e Feedback */
+.feed-box{margin-top:16px;padding:18px;border-radius:18px;display:grid;gap:12px}
+.feed-seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:4px;border-radius:12px;background:var(--surface-2)}
+.feed-seg button{height:34px;border:0;border-radius:8px;background:none;font:500 12px var(--font);color:var(--soft);cursor:pointer;transition:.2s}
+.feed-seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,.08)}

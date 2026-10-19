@@ -1,6 +1,6 @@
 /* Loja Systekna · service worker
    Troque a versão a cada publicação para os aparelhos receberem a atualização. */
-const VERSION = "stk-loja-v1.3.0";
+const VERSION = "stk-loja-v1.4.0";
 const SHELL = [
   "./", "./index.html", "./manifest.webmanifest",
   "./css/styles.css",
