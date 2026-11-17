@@ -37,7 +37,7 @@ service cloud.firestore {
         && (request.method == 'delete' || request.resource.data.apps is map);
     }
 
-    // Base Canônica de Sugestões e Feedbacks (stk-pkg-doacao)
+    // Base Canônica de Sugestões e Feedbacks (stk-pkt-doacao)
     match /sugestoes/{id} {
       allow create: if request.resource.data.keys().hasOnly(['app', 'tipo', 'texto', 'email', 'criadoEm', 'lida'])
         && request.resource.data.tipo in ['sugestao', 'problema', 'elogio']
