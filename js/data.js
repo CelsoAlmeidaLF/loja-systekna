@@ -23,13 +23,16 @@ function demoStore(cfg) {
   const read = (k, d) => { try { const v = localStorage.getItem(K + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } };
   const write = (k, v) => { try { localStorage.setItem(K + k, JSON.stringify(v)); } catch (e) { throw err("quota", "Espaço do navegador cheio"); } };
 
-  const BANNED_IDS = new Set(["corretor", "carros", "despesas-casa", "agenda-remay", "agenda-remay-instalar", "remay"]);
+  const BANNED_IDS = new Set([
+    "corretor", "carros", "despesas-casa", "agenda-remay", "agenda-remay-instalar", "remay",
+    "feedback-painel", "feedback", "governanca-systekna", "governanca"
+  ]);
   const isBanned = (id, a) => BANNED_IDS.has(id) || 
-    /corretor|im[oó]vel|carro|remay/i.test((a && a.name) || '') || 
+    /corretor|im[oó]vel|carro|remay|feedback|governan[cç]a/i.test((a && a.name) || '') || 
     /im[oó]vel|ve[ií]culo|remay/i.test((a && a.cat) || '') ||
-    /remay/i.test(id || '');
+    /remay|feedback|governan[cç]a/i.test(id || '');
 
-  // Expurgar proativamente apps legados e nao-STK (corretora, carros, remay) do armazenamento local
+  // Expurgar proativamente apps legados, nao-STK e paineis internos (corretora, carros, remay, feedback, governanca) do armazenamento local
   try {
     const raw = read("apps", {});
     let hasBanned = false;
@@ -42,7 +45,7 @@ function demoStore(cfg) {
     if (hasBanned) write("apps", raw);
   } catch (_) {}
 
-  const CURRENT_SEED_VER = 6;
+  const CURRENT_SEED_VER = 7;
   const lastSeedVer = read("seed_ver", 0);
   if (lastSeedVer < CURRENT_SEED_VER) {
     const currentApps = {};

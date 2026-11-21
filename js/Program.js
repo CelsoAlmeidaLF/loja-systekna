@@ -34,8 +34,8 @@ const CAT_H={'Fitness':142,'Finanças':212,'Negócios':328,'Identidade':186,'Pro
 
 let SUP={},SUGS=[],supTab='pix',supAmt=10,APPS=[],status='loading',store=null,me=null,NAMES={},deferredInstall=null,swWaiting=null,isAdmin=false,assets=null,RV={},REP={},myId=null,userNS=null,myRevDoc=null,tabApp=null,rvApp=null,rvStars=0,pendingRender=false;
 let favs=local.get('favs',[]),rates=local.get('rates',{}),cat=null,q='',tab='geral',auto=null,draft=null,lastDel=null;
-const BANNED_IDS = new Set(['corretor', 'carros', 'despesas-casa', 'agenda-remay', 'agenda-remay-instalar', 'remay']);
-const isBanned = a => !a || BANNED_IDS.has(a.id) || /corretor|im[oó]vel|carro|remay/i.test(a.name || '') || /im[oó]vel|ve[ií]culo|remay/i.test(a.cat || '') || /remay/i.test(a.id || '');
+const BANNED_IDS = new Set(['corretor', 'carros', 'despesas-casa', 'agenda-remay', 'agenda-remay-instalar', 'remay', 'feedback-painel', 'feedback', 'governanca-systekna', 'governanca']);
+const isBanned = a => !a || BANNED_IDS.has(a.id) || /corretor|im[oó]vel|carro|remay|feedback|governan[cç]a/i.test(a.name || '') || /im[oó]vel|ve[ií]culo|remay/i.test(a.cat || '') || /remay|feedback|governan[cç]a/i.test(a.id || '');
 const pub=()=>APPS.filter(a=>a.visible!==false&&!isBanned(a));
 const byId=id=>{const a=APPS.find(x=>x.id===id);return(a&&!isBanned(a))?a:null};
 const DAY=864e5,fmt1=n=>n.toFixed(1).replace('.',','),dbr=iso=>{const d=new Date(iso);return isNaN(d)?'':d.toLocaleDateString('pt-BR')};
