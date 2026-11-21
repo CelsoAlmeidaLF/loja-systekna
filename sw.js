@@ -1,6 +1,6 @@
-/* Loja Systekna · service worker v1.4.2
+/* Loja Systekna · service worker v1.4.4
    Atualização imediata com self.skipWaiting() e estratégia Network-First para scripts. */
-const VERSION = "stk-loja-v1.4.3";
+const VERSION = "stk-loja-v1.4.4";
 const SHELL = [
   "./", "./index.html", "./manifest.webmanifest",
   "./css/styles.css",

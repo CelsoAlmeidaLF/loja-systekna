@@ -1,205 +1,333 @@
-/* Catálogo inicial da Loja Systekna.
-   Usado no modo demonstração e no botão "Importar catálogo inicial" da Gestão.
-   Cada app traz ícones vetoriais em Base64 e URLs diretas do ecossistema Systekna. */
+/* Catálogo oficial completo da Loja Systekna (Play Store Systekna).
+   Contém todos os 16 aplicativos ativos do ecossistema com links de produção no GitHub Pages,
+   repositórios no GitHub, recursos, metadados e ícones vetoriais SVG Base64. */
 export const SEED = [
   {
-    "id": "livro-caixa",
-    "tasks": [
-      "controlar meus gastos",
-      "organizar o cartão de crédito",
-      "acompanhar minhas dívidas",
-      "ver para onde vai meu dinheiro"
-    ],
+    "id": "fit-force",
     "order": 1,
-    "name": "Livro-Caixa",
+    "name": "Fit Força",
+    "cat": "Fitness",
+    "h": 142,
+    "ic": "haltere",
+    "status": "ok",
+    "short": "Musculação, volume e sobrecarga progressiva",
+    "desc": "PWA Local-First de treino de força com cálculo de 1RM (Epley), descanso com Web Audio, fadiga muscular anatômica e backup offline.",
+    "feats": [
+      "Cálculo de 1RM e sobrecarga progressiva",
+      "Mapa anatômico de prontidão muscular",
+      "Cronômetro de descanso em segundo plano",
+      "Bloqueio com PIN e 12 palavras BIP39",
+      "Emissão de Certificado de Segurança PDF"
+    ],
+    "data": "Fica no aparelho",
+    "featured": true,
+    "storyTitle": "Treino de força soberano",
+    "storyText": "Zero anúncios, sem telemetria e com controle total das suas séries e cargas no aparelho.",
+    "url": "https://celsoalmeidalf.github.io/fit-force/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/fit-force",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzM0RDM5OSIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMDU5NjY5Ii8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiMwNDc4NTciLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwNjVGNDYiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNi41IDYuNWwxMSAxMU0yMSAyMWwtMS0xTTMgM2wxIDFNMTggMjJsNC00LTEuNS0xLjUtNCA0TDE4IDIyek0yIDZsNC00IDEuNSAxLjUtNCA0TDIgNnpNMyAxMGw0LTRNMTQgMjFsNC00Ii8+PC9nPgo8L3N2Zz4="
+  },
+  {
+    "id": "fit-smart",
+    "order": 2,
+    "name": "Fit Smart",
+    "cat": "Fitness",
+    "h": 160,
+    "ic": "coracao",
+    "status": "ok",
+    "short": "Saúde corporal, dieta, água e treinos",
+    "desc": "Acompanhamento de peso, cálculo de TMB/TDEE (Mifflin-St Jeor), registro de refeições, ingestão de água e biometria segura.",
+    "feats": [
+      "Cálculo metabólico e metas calóricas",
+      "Registro diário de refeições e água",
+      "Evolução de peso e histórico corporal",
+      "Bloqueio por PIN tátil e biometria",
+      "Certificado de segurança PDF e 12 palavras"
+    ],
+    "data": "Fica no aparelho",
+    "featured": true,
+    "storyTitle": "Saúde e nutrição sem vazamento",
+    "storyText": "Seus dados corporais, metas e diários não saem do seu celular.",
+    "url": "https://celsoalmeidalf.github.io/fit-smart/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/fit-smart",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0ZCOTIzQyIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjRUE1ODBDIi8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiNDMjQxMEMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM5QTM0MTIiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTkgMTRjMS40OS0xLjQ2IDMtMy4yMSAzLTUuNUE1LjUgNS41IDAgMCAwIDE2LjUgM2MtMS43NiAwLTMgLjUtNC41IDItMS41LTEuNS0yLjc0LTItNC41LTJBNS41IDUuNSAwIDAgMCAyIDguNWMwIDIuMyAxLjUgNC4wNSAzIDUuNWw3IDdaIi8+PC9nPgo8L3N2Zz4="
+  },
+  {
+    "id": "taxometro",
+    "order": 3,
+    "name": "Taxômetro",
+    "cat": "Finanças",
+    "h": 220,
+    "ic": "tributo",
+    "status": "ok",
+    "short": "Simulador CBS/IBS da Reforma Tributária",
+    "desc": "Motor fiscal canônico com simulação de tributos, transição da PEC 45/110, cesta básica nacional e split payment.",
+    "feats": [
+      "Cálculo de CBS federal e IBS subnacional",
+      "Transição gradual de alíquotas 2026-2033",
+      "Exportação de relatórios fiscais",
+      "Cofre criptográfico AES-GCM 256 bits"
+    ],
+    "data": "Criptografado no aparelho",
+    "featured": true,
+    "storyTitle": "Entenda o impacto da reforma fiscal",
+    "storyText": "Simule o IVA Dual e calcule impostos da sua empresa com precisão matemática.",
+    "url": "https://celsoalmeidalf.github.io/taxometro/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/taxometro",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0Y4NzE3MSIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjREMyNjI2Ii8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiNCOTFDMUMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM5OTFCMUIiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNCAydjIwbDItMSAyIDEgMi0xIDIgMSAyLTEgMiAxIDItMSAyIDFWMmwtMiAxLTItMS0yIDEtMi0xLTIgMS0yLTEtMiAxLTItMVpNMTQgOEg4bTggNEg4bTMgNEg4Ii8+PC9nPgo8L3N2Zz4="
+  },
+  {
+    "id": "gerenc-fin",
+    "order": 4,
+    "name": "Gerenciador Financeiro",
     "cat": "Finanças",
     "h": 212,
     "ic": "caixa",
     "status": "ok",
     "short": "Receitas, despesas, cartão e dívidas",
-    "desc": "Controle financeiro pessoal com lançamentos de receitas e despesas, fatura do cartão, metas e dívidas, com assistente e insights sobre os seus gastos.",
+    "desc": "Controle financeiro pessoal completo com lançamentos, fatura do cartão, metas, dívidas e assistente de insights.",
     "feats": [
-      "Lançamentos com categorias",
-      "Fatura e limite do cartão",
-      "Metas e dívidas com progresso",
-      "Modo claro, escuro e luz ambiente"
+      "Lançamentos com categorização inteligente",
+      "Faturas de cartão de crédito",
+      "Cofre com recuperação por 12 palavras",
+      "Modo claro e escuro Glassmorphism"
+    ],
+    "data": "Fica no aparelho",
+    "featured": false,
+    "url": "https://celsoalmeidalf.github.io/gerenc-fin/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/gerenc-fin",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzYwQTVGQSIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMjU2M0VCIi8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiMxRDRFRDgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxRTQwQUYiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTkgN1Y0YTEgMSAwIDAgMC0xLTFINWEyIDIgMCAwIDAgMCA0aDE1YTEgMSAwIDAgMSAxIDF2NGgtM2EyIDIgMCAwIDAgMCA0aDNhMSAxIDAgMCAwIDEtMXYtMmExIDEgMCAwIDAtMS0xTTMgNXYxNGEyIDIgMCAwIDAgMiAyaDE1YTEgMSAwIDAgMCAxLTF2LTQiLz48L2c+Cjwvc3ZnPg=="
+  },
+  {
+    "id": "invest-sim",
+    "order": 5,
+    "name": "Investimentos Simulador",
+    "cat": "Finanças",
+    "h": 190,
+    "ic": "investimento",
+    "status": "ok",
+    "short": "Simulações de Renda Fixa, CDI, IPCA e Ações",
+    "desc": "Simule aportes mensais, compare rentabilidades líquidas de IR, analise taxas de juros reais e projete patrimônio futuro.",
+    "feats": [
+      "Comparador CDI vs Poupança vs IPCA+",
+      "Gráficos interativos de evolução patrimonial",
+      "Cálculo automático de Imposto de Renda regressivo",
+      "Persistência local segura sem servidores"
     ],
     "data": "Fica no aparelho",
     "featured": true,
-    "storyTitle": "Seu dinheiro, sob controle",
-    "storyText": "Receitas, cartão e dívidas num só lugar, com insights que mostram para onde vai cada real.",
-    "url": "https://celsoalmeidalf.github.io/livro-caixa/",
-    "repoUrl": "https://github.com/CelsoAlmeidaLF/livro-caixa",
-    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzYwQTVGQSIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMjU2M0VCIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ii41MiIgc3RvcC1jb2xvcj0iIzFENEVEOCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzFFNDBBRiIvPgogIDwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2IDI1Nikgc2NhbGUoMTIpIHRyYW5zbGF0ZSgtMTIgLTEyKSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIgogICAgIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xOSA3VjRhMSAxIDAgMCAwLTEtMUg1YTIgMiAwIDAgMCAwIDRoMTVhMSAxIDAgMCAxIDEgMXY0aC0zYTIgMiAwIDAgMCAwIDRoM2ExIDEgMCAwIDAgMS0xdi0yYTEgMSAwIDAgMC0xLTEiLz48cGF0aCBkPSJNMyA1djE0YTIgMiAwIDAgMCAyIDJoMTVhMSAxIDAgMCAwIDEtMXYtNCIvPjwvZz4KPC9zdmc+"
+    "storyTitle": "Projete o crescimento do seu patrimônio",
+    "storyText": "Descubra o efeito dos juros compostos e compare investimentos sem viés bancário.",
+    "url": "https://celsoalmeidalf.github.io/invest-sim/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/invest-sim",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0ZCQkYyNCIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjRDk3NzA2Ii8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiNCNDUzMDkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM5MjQwMEUiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjIgNyAxMy41IDE1LjUgOC41IDEwLjUgMiAxN00xNiA3aDZ2NiIvPjwvZz4KPC9zdmc+"
   },
   {
-    "id": "cripto",
-    "tasks": [
-      "acompanhar minhas criptomoedas",
-      "converter bitcoin para real",
-      "simular uma carteira de cripto"
-    ],
-    "order": 2,
+    "id": "cripto-sim",
+    "order": 6,
     "name": "Cripto Portfólio",
     "cat": "Finanças",
     "h": 38,
     "ic": "cripto",
     "status": "ok",
     "short": "Conversor e carteira de criptomoedas",
-    "desc": "Converta criptomoedas e acompanhe em reais o valor de uma carteira simulada.",
+    "desc": "Converta criptomoedas e acompanhe em reais o valor de uma carteira simulada com segurança militar.",
     "feats": [
-      "Conversor entre moedas",
-      "Simulador de portfólio",
-      "Funciona como app instalado"
+      "Cotações de criptoativos em tempo real",
+      "Simulador de carteira de criptoativos",
+      "Cofre local cifrado por PBKDF2 e AES-GCM"
     ],
     "data": "Fica no aparelho",
     "url": "https://celsoalmeidalf.github.io/cripto-sim/",
     "repoUrl": "https://github.com/CelsoAlmeidaLF/cripto-sim",
-    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0ZERTA0NyIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjRUFCMzA4Ii8+CiAgICA8c3RvcCBvZmZzZXQ9Ii41MiIgc3RvcC1jb2xvcj0iI0NBOEEwNCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0ExNjIwNyIvPgogIDwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2IDI1Nikgc2NhbGUoMTIpIHRyYW5zbGF0ZSgtMTIgLTEyKSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIgogICAgIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xMS43NjcgMTkuMDg5YzQuOTI0Ljg2OCA2LjE0LTYuMDI1IDEuMjE2LTYuODk0bS0xLjIxNiA2Ljg5NEw1Ljg2IDE4LjA0N201LjkwOCAxLjA0Mi0uMzQ3IDEuOTdtMS41NjMtOC44NjRjNC45MjQuODY5IDYuMTQtNi4wMjUgMS4yMTUtNi44OTNtLTEuMjE1IDYuODkzLTMuOTQtLjY5NG01LjE1NS02LjJMOC4yOSA0LjI2bTUuOTA4IDEuMDQyLjM0OC0xLjk3TTcuNDggMjAuMzY0bDMuMTI2LTE3LjcyNyIvPjwvZz4KPC9zdmc+"
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0ZCQkYyNCIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjRDk3NzA2Ii8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiNCNDUzMDkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM5MjQwMEUiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTEuNzY3IDE5LjA4OWM0LjkyNC44NjggNi4xNC02LjAyNSAxLjIxNi02Ljg5NG0tMS4yMTYgNi44OTRMNS44NiAxOC4wNDdtNS45MDggMS4wNDItLjM0NyAxLjk3bTEuNTYzLTguODY0YzQuOTI0Ljg2OSA2LjE0LTYuMDI1IDEuMjE1LTYuODkzbS0xLjIxNSA2Ljg5My0zLjk0LS42OTRtNS4xNTUtNi4yTDguMjkgNC4yNm01LjkwOCAxLjA0Mi4zNDgtMS45N003LjQ4IDIwLjM2NGwzLjEyNi0xNy43MjciLz48L2c+Cjwvc3ZnPg=="
   },
   {
-    "id": "cambio",
-    "tasks": [
-      "ver a cotação do dólar",
-      "converter dólar para real"
-    ],
-    "order": 3,
-    "name": "Câmbio",
+    "id": "cambio-sim",
+    "order": 7,
+    "name": "Câmbio e Moedas",
     "cat": "Finanças",
-    "h": 152,
+    "h": 24,
     "ic": "cambio",
     "status": "ok",
-    "short": "Cotação do dólar e conversor",
-    "desc": "Painel com a cotação USD/BRL e conversor nos dois sentidos.",
+    "short": "Conversor de moedas internacionais",
+    "desc": "Conversões entre real, dólar, euro e mais de 15 moedas globais com IOF e spread configuráveis.",
     "feats": [
-      "Painel do dólar",
-      "Conversor USD ⇄ BRL",
-      "Seletor de sentido"
+      "Conversão rápida offline",
+      "Histórico de operações com data e hora",
+      "Configuração de taxa de IOF e taxas de cartão"
     ],
     "data": "Fica no aparelho",
     "url": "https://celsoalmeidalf.github.io/cambio-sim/",
     "repoUrl": "https://github.com/CelsoAlmeidaLF/cambio-sim",
-    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzJERDRCRiIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMEQ5NDg4Ii8+CiAgICA8c3RvcCBvZmZzZXQ9Ii41MiIgc3RvcC1jb2xvcj0iIzBGNzY2RSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzExNUU1OSIvPgogIDwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2IDI1Nikgc2NhbGUoMTIpIHRyYW5zbGF0ZSgtMTIgLTEyKSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIgogICAgIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik04IDMgNCA3bDQgNCIvPjxwYXRoIGQ9Ik00IDdoMTYiLz48cGF0aCBkPSJtMTYgMjEgNC00LTQtNCIvPjxwYXRoIGQ9Ik0yMCAxN0g0Ii8+PC9nPgo8L3N2Zz4="
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzM4QkRGOCIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMDI4NEM3Ii8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiMwMzY5QTEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwNzU5ODUiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJtMTYgMyA0IDQtNCA0TTIwIDdINE04IDIxbC00LTQgNC00TTQgMTdoMTYiLz48L2c+Cjwvc3ZnPg=="
   },
   {
-    "id": "despesas-casa",
-    "tasks": [
-      "dividir as contas da casa",
-      "organizar despesas com quem mora comigo"
-    ],
-    "order": 4,
-    "name": "Despesas da Casa",
-    "cat": "Casa",
-    "h": 18,
-    "ic": "casa",
-    "status": "ok",
-    "short": "Despesas compartilhadas em tempo real",
-    "desc": "Divida as despesas da casa com quem mora com você. Os lançamentos sincronizam entre os aparelhos.",
-    "feats": [
-      "Lançamentos compartilhados",
-      "Sincronização entre celulares",
-      "Funciona no Android e no iPhone"
-    ],
-    "data": "Sincronizado via Firebase",
-    "url": "https://despesasdacasa.web.app",
-    "repoUrl": "https://github.com/CelsoAlmeidaLF/Financas-da-Casa",
-    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0ZCOTIzQyIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjRUE1ODBDIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ii41MiIgc3RvcC1jb2xvcj0iI0MyNDEwQyIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzlBMzQxMiIvPgogIDwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2IDI1Nikgc2NhbGUoMTIpIHRyYW5zbGF0ZSgtMTIgLTEyKSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIgogICAgIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0zIDExbDktNyA5IDd2OUgzek05IDIwdi02aDZ2NiIvPjwvZz4KPC9zdmc+"
-  },
-  {
-    "id": "agenda",
-    "tasks": [
-      "agendar clientes do salão",
-      "controlar horários dos profissionais",
-      "calcular comissão"
-    ],
-    "order": 5,
-    "name": "Studio Agenda",
+    "id": "multi-cm",
+    "order": 8,
+    "name": "BarGestão (Multi-CM)",
     "cat": "Negócios",
     "h": 328,
-    "ic": "agenda",
-    "status": "beta",
-    "short": "Agenda de atendimentos para salões",
-    "desc": "Agenda em grade por profissional, cadastro de clientes e serviços, fechamento, pagamento, comissão e relatórios.",
+    "ic": "bar",
+    "status": "ok",
+    "short": "Comandas, mesas, estoque e fechamento de caixa",
+    "desc": "Sistema operacional completo para bares, restaurantes e salgados. Comandas em tempo real e relatórios térmicos ESC/POS.",
     "feats": [
-      "Grade de 30 em 30 minutos",
-      "Comanda, fechamento e pagamento",
-      "Comissão por profissional",
-      "Relatórios de faturamento"
+      "Gestão de mesas e pedidos individuais",
+      "Fechamento de caixa diário e sangrias",
+      "Impressão térmica ESC/POS de comandas",
+      "Cofre de equipe com 12 palavras e reautenticação"
     ],
     "data": "Fica no aparelho",
     "featured": true,
-    "storyTitle": "A agenda do salão num toque",
-    "storyText": "Horários por profissional, comanda e comissão no mesmo lugar.",
-    "url": "https://celsoalmeidalf.github.io/studio-agenda/",
-    "repoUrl": "https://github.com/CelsoAlmeidaLF/studio-agenda",
-    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0iI2MyMjU1YyIvPjxyZWN0IHg9IjExMiIgeT0iMTI4IiB3aWR0aD0iMjg4IiBoZWlnaHQ9IjI3MiIgcng9IjM2IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMzIiLz48cGF0aCBkPSJNMTEyIDIwMGgyODhNMTg0IDk2djY0TTMyOCA5NnY2NCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cmVjdCB4PSIyNjAiIHk9IjI1NiIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjgwIiByeD0iMTYiIGZpbGw9IiNmZmYiLz48L3N2Zz4="
+    "storyTitle": "Agilidade total para o seu bar ou restaurante",
+    "storyText": "Atenda mesas com rapidez, feche caixas com rigor fiscal e nunca dependa de nuvem para vender.",
+    "url": "https://celsoalmeidalf.github.io/multi-cm/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/multi-cm",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0ZCOTIzQyIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjRUE1ODBDIi8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiNDMjQxMEMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM5QTM0MTIiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJtMiA3IDQuNDEtNC40MUEyIDIgMCAwIDEgNy44MyAyaDguMzRhMiAyIDAgMCAxIDEuNDIuNTlMMjIgN000IDEydjhhMiAyIDAgMCAwIDIgMmgxMmEyIDIgMCAwIDAgMi0ydi04TTE1IDIydi00YTIgMiAwIDAgMC0yLTJoLTJhMiAyIDAgMCAwLTIgMnY0TTIgN2gyMCIvPjwvZz4KPC9zdmc+"
   },
   {
-    "id": "corretor",
-    "tasks": [
-      "controlar vendas de imóveis",
-      "acompanhar o faturamento da equipe"
-    ],
-    "order": 6,
-    "name": "Corretor",
-    "cat": "Negócios",
-    "h": 262,
-    "ic": "predio",
-    "status": "beta",
-    "short": "Vendas e faturamento de imóveis",
-    "desc": "Gestão das vendas de apartamentos para gerentes e vendedores, com cadastro de imóveis e faturamento.",
+    "id": "governanca-systekna",
+    "order": 9,
+    "name": "Governança Systekna",
+    "cat": "Identidade",
+    "h": 240,
+    "ic": "escudo",
+    "status": "ok",
+    "short": "Gestão de licenças, aprovações e credenciamento",
+    "desc": "Cartório digital e hub de governança institucional. Homologação de tenants, modulação e auditoria corporativa.",
     "feats": [
-      "Cadastro por gerente e vendedor",
-      "Funil de vendas",
-      "Faturamento por período"
+      "Aprovação e modulação de estabelecimentos",
+      "Kill-switch remoto e proteção de licença",
+      "Gestão de notícias e avisos para desenvolvedores",
+      "Trilha de auditoria encadeada com Merkle SHA-256"
+    ],
+    "data": "Criptografado no cofre",
+    "url": "https://celsoalmeidalf.github.io/governanca-systekna/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/governanca-systekna",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzYwQTVGQSIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMjU2M0VCIi8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiMxRDRFRDgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxRTQwQUYiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgMjJzOC00IDgtMTBWNWwtOC0zLTggM3Y3YzAgNiA4IDEwIDggMTB6TTkgMTJsMiAyIDQtNCIvPjwvZz4KPC9zdmc+"
+  },
+  {
+    "id": "feedback-painel",
+    "order": 10,
+    "name": "Painel de Feedbacks & Erros",
+    "cat": "Identidade",
+    "h": 180,
+    "ic": "mensagem",
+    "status": "ok",
+    "short": "Hub analítico de avaliações e bugs",
+    "desc": "Painel gerencial de monitoramento de feedbacks de usuários, notas NPS e triagem técnica de exceções com anonimização de PII.",
+    "feats": [
+      "Agrupamento inteligente de erros por assinatura",
+      "Distribuição e métricas de satisfação (NPS)",
+      "Exportação de dados em CSV com cabeçalho UTF-8 BOM",
+      "Sessão volátil em memória e cofre FINANC ID"
+    ],
+    "data": "Higienizado localmente",
+    "url": "https://celsoalmeidalf.github.io/feedback-painel/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/feedback-painel",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzM4QkRGOCIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMDI4NEM3Ii8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiMwMzY5QTEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwNzU5ODUiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjEgMTVhMiAyIDAgMCAxLTIgMkg3bC00IDRWNWEyIDIgMCAwIDEgMi0yaDE0YTIgMiAwIDAgMSAyIDJ6Ii8+PC9nPgo8L3N2Zz4="
+  },
+  {
+    "id": "studio-agenda",
+    "order": 11,
+    "name": "Studio Agenda Completo",
+    "cat": "Produtividade",
+    "h": 210,
+    "ic": "agenda",
+    "status": "ok",
+    "short": "Gestão de compromissos, estúdio e agenda",
+    "desc": "Agendamento avançado, gestão de horários, lembretes de clientes e organização de atendimentos para profissionais e estúdios.",
+    "feats": [
+      "Visualização diária, semanal e mensal",
+      "Controle de clientes e serviços",
+      "Exportação e backup de dados",
+      "Interface Aero 3.0 de alta produtividade"
     ],
     "data": "Fica no aparelho",
-    "url": "https://celsoalmeidalf.github.io/corretor/",
-    "repoUrl": "https://github.com/CelsoAlmeidaLF/corretor",
-    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0MwODRGQyIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjOTMzM0VBIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ii41MiIgc3RvcC1jb2xvcj0iIzdFMjJDRSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzZCMjFBOCIvPgogIDwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2IDI1Nikgc2NhbGUoMTIpIHRyYW5zbGF0ZSgtMTIgLTEyKSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIgogICAgIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik00IDIxVjVsOC0ydjE4TTEyIDloOHYxMk03IDhoMk03IDEyaDJNNyAxNmgyTTE1IDEzaDJNMTUgMTdoMiIvPjwvZz4KPC9zdmc+"
+    "featured": true,
+    "storyTitle": "Organização soberana para o seu negócio",
+    "storyText": "Controle seus atendimentos e horários sem risco de perder o acesso à sua base de clientes.",
+    "url": "https://celsoalmeidalf.github.io/studio-agenda-completo/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/studio-agenda-completo",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0MwODRGQyIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjOTMzM0VBIi8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiM3RTIyQ0UiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM2QjIxQTgiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNOCAydjRNMTYgMnY0TTMgMTBoMThNNSA0aDE0YTIgMiAwIDAgMSAyIDJ2MTRhMiAyIDAgMCAxLTIgMkg1YTIgMiAwIDAgMS0yLTJWNmEyIDIgMCAwIDEgMi0yeiIvPjwvZz4KPC9zdmc+"
   },
   {
-    "id": "carros",
-    "tasks": [
-      "controlar vendas de carros",
-      "acompanhar o faturamento da revenda"
-    ],
-    "order": 7,
-    "name": "Carros",
-    "cat": "Negócios",
-    "h": 4,
-    "ic": "carro",
-    "status": "beta",
-    "short": "Vendas da corretora de carros",
-    "desc": "O mesmo modelo do app Corretor, adaptado para a venda de veículos.",
+    "id": "calculadora",
+    "order": 12,
+    "name": "Calculadora Cívica",
+    "cat": "Governo",
+    "h": 168,
+    "ic": "calculadora",
+    "status": "ok",
+    "short": "Cálculo e transparência tributária cívica",
+    "desc": "Calculadora pública dos custos governamentais, gastos públicos per capita e composição da carga tributária brasileira.",
     "feats": [
-      "Cadastro de veículos",
-      "Acompanhamento das vendas",
-      "Faturamento por período"
+      "Simulação de impostos diretos e indiretos",
+      "Comparação do custo do estado brasileiro",
+      "Tabelas oficiais e parâmetros cívicos abertos",
+      "Zero dados coletados: privacidade absoluta"
     ],
     "data": "Fica no aparelho",
-    "url": "https://celsoalmeidalf.github.io/carros/",
-    "repoUrl": "https://github.com/CelsoAlmeidaLF/carros",
-    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0Y4NzE3MSIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjREMyNjI2Ii8+CiAgICA8c3RvcCBvZmZzZXQ9Ii41MiIgc3RvcC1jb2xvcj0iI0I5MUMxQyIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzk5MUIxQiIvPgogIDwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2IDI1Nikgc2NhbGUoMTIpIHRyYW5zbGF0ZSgtMTIgLTEyKSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIgogICAgIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik01IDE3aDE0TTYgMTdsMS41LTZoOUwxOCAxN003IDExbDEtNGg4bDEgNE04IDIxdi0yTTE2IDIxdi0yIi8+PC9nPgo8L3N2Zz4="
+    "url": "https://celsoalmeidalf.github.io/calculadora/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/calculadora",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzZCNzI4MCIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMzc0MTUxIi8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiMxRjI5MzciLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMTE4MjciLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNCAydjIwaDE2VjJINHptNCA0aDh2M0g4VjZ6bTEgNmgydjJIOXYtMnptNCAwaDJ2MmgtMnYtMnptLTQgNGgydjJIOXYtMnptNCAwaDJ2MmgtMnYtMnoiLz48L2c+Cjwvc3ZnPg=="
   },
   {
-    "id": "carteira",
-    "tasks": [
-      "guardar minha identidade digital",
-      "provar quem eu sou sem expor dados"
+    "id": "liberdade-economica",
+    "order": 13,
+    "name": "Liberdade Econômica",
+    "cat": "Governo",
+    "h": 150,
+    "ic": "balanca",
+    "status": "ok",
+    "short": "Indicadores municipais da Lei de Liberdade Econômica",
+    "desc": "Acompanhamento da desburocratização, dispensa de alvarás de baixo risco e implementação da Lei Federal 13.874/19 nos municípios.",
+    "feats": [
+      "Consulta de enquadramento de atividades de baixo risco",
+      "Auditoria de conformidade municipal",
+      "Painel de indicadores regulatórios",
+      "Acesso cívico aberto e gratuito"
     ],
-    "order": 8,
+    "data": "Fica no aparelho",
+    "url": "https://celsoalmeidalf.github.io/liberdade-economica/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/liberdade-economica",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzYwQTVGQSIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMjU2M0VCIi8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiMxRDRFRDgiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxRTQwQUYiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTYgMTZsMy04IDMgOGEzIDMgMCAwIDEtNiAwek0yIDE2bDMtOCAzIDhhMyAzIDAgMCAxLTYgMHpNNyAyMWgxME0xMiAzdjE4TTMgN2gxOCIvPjwvZz4KPC9zdmc+"
+  },
+  {
+    "id": "pesquisa-preco",
+    "order": 14,
+    "name": "Pesquisa de Preços Brasil",
+    "cat": "Governo",
+    "h": 170,
+    "ic": "lupa",
+    "status": "ok",
+    "short": "Consulta e transparência de preços públicos",
+    "desc": "Ferramenta cívica para levantamento de preços de referência, pregões eletrônicos e compras governamentais sob a Lei 14.133/21.",
+    "feats": [
+      "Banco de dados cívico de itens e serviços",
+      "Média, mediana e desvio-padrão de cotações",
+      "Exportação de cestas de preços para auditoria"
+    ],
+    "data": "Fica no aparelho",
+    "url": "https://celsoalmeidalf.github.io/pesquisa-preco/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/pesquisa-preco",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzM4QkRGOCIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMDI4NEM3Ii8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiMwMzY5QTEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwNzU5ODUiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTAgMTBtLTcgMGE3IDcgMCAxIDAgMTQgMGE3IDcgMCAxIDAtMTQgME0yMSAyMWwtNi02TTkgOGgydjRIOXptMCAwaDNhMSAxIDAgMCAxIDAgMkg5Ii8+PC9nPgo8L3N2Zz4="
+  },
+  {
+    "id": "identidade-systekna",
+    "order": 15,
     "name": "Carteira Soberana",
     "cat": "Identidade",
     "h": 186,
     "ic": "chave",
-    "status": "lab",
-    "short": "Sua identidade digital, só sua",
-    "desc": "Identidade soberana com chave pública e privada, PIN de 6 dígitos, recuperação por 12 palavras e crachás emitidos por serviços.",
+    "status": "ok",
+    "short": "Identidade digital descentralizada",
+    "desc": "Identidade soberana com par de chaves assimétricas Ed25519 e NIST P-256, PIN de 6 dígitos e crachás verificáveis.",
     "feats": [
-      "Identidade guardada só com você",
-      "Recuperação com 12 palavras",
-      "Crachás de acesso a serviços"
+      "Chaves privadas guardadas no dispositivo",
+      "Recuperação matemática com 12 palavras",
+      "Armazenamento de credenciais e crachás"
     ],
     "data": "Criptografado no aparelho",
     "featured": true,
@@ -207,54 +335,27 @@ export const SEED = [
     "storyText": "Chaves no seu aparelho, recuperação por 12 palavras e nenhum dado em servidor.",
     "url": "https://celsoalmeidalf.github.io/identidade-systekna/",
     "repoUrl": "https://github.com/CelsoAlmeidaLF/identidade-systekna",
-    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzdDQ0JGOCIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjM0JBMEVBIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ii41MiIgc3RvcC1jb2xvcj0iIzFBN0FENCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzJCOERFMiIvPgogIDwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2IDI1Nikgc2NhbGUoMTIpIHRyYW5zbGF0ZSgtMTIgLTEyKSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIgogICAgIHN0cm9rZS13aWR0aD0iMS43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xMiAzbDcgM3Y1YzAgNC41LTMgOC4zLTcgMTAtNC0xLjctNy01LjUtNy0xMFY2eiIvPjxwYXRoIGQ9Ik05IDEybDIgMiA0LTQiLz48L2c+Cjwvc3ZnPg=="
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzM4QkRGOCIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMDI4NEM3Ii8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiMwMzY5QTEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwNzU5ODUiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNNyAxMVY3YTUgNSAwIDAgMSAxMCAwdjRNNSAxMWgxNGEyIDIgMCAwIDEgMiAydjdhMiAyIDAgMCAxLTIgMkg1YTIgMiAwIDAgMS0yLTJ2LTdhMiAyIDAgMCAxIDItMnoiLz48L2c+Cjwvc3ZnPg=="
   },
   {
-    "id": "governanca",
-    "tasks": [
-      "aprovar identidades digitais",
-      "credenciar serviços"
-    ],
-    "order": 9,
-    "name": "Governança Systekna",
-    "cat": "Identidade",
-    "h": 240,
-    "ic": "escudo",
-    "status": "lab",
-    "short": "Aprova identidades e credencia serviços",
-    "desc": "O cartório digital da Systekna: aprova identidades e credencia serviços para emitir crachás.",
+    "id": "agenda-remay-instalar",
+    "order": 16,
+    "name": "Agenda Remay",
+    "cat": "Produtividade",
+    "h": 140,
+    "ic": "agenda",
+    "status": "ok",
+    "short": "PWA, APK e Extensão Chrome de agendamentos",
+    "desc": "Hub de instalação da Agenda Remay para atendimento pessoal, salão e estética com suporte a Android (APK) e Chrome Web Store.",
     "feats": [
-      "Aprovação de identidades",
-      "Credenciamento de serviços"
+      "Instalação PWA direta no celular",
+      "Download de APK assinado para Android",
+      "Pacote de extensão para navegador Chrome",
+      "Sincronização Local-First"
     ],
-    "data": "Nenhum dado pessoal em servidor",
-    "url": "https://celsoalmeidalf.github.io/governanca-systekna/",
-    "repoUrl": "https://github.com/CelsoAlmeidaLF/governanca-systekna",
-    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzVFOUZFMCIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMUY2RkMwIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ii41MiIgc3RvcC1jb2xvcj0iIzBFNEY5NiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzFBNjJBRSIvPgogIDwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2IDI1Nikgc2NhbGUoMTIpIHRyYW5zbGF0ZSgtMTIgLTEyKSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIgogICAgIHN0cm9rZS13aWR0aD0iMS43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0zLjg1IDguNjJhNCA0IDAgMCAxIDQuNzgtNC43NyA0IDQgMCAwIDEgNi43NCAwIDQgNCAwIDAgMSA0Ljc4IDQuNzggNCA0IDAgMCAxIDAgNi43NCA0IDQgMCAwIDEtNC43NyA0Ljc4IDQgNCAwIDAgMS02Ljc1IDAgNCA0IDAgMCAxLTQuNzgtNC43NyA0IDQgMCAwIDEgMC02Ljc2WiIvPjxwYXRoIGQ9Ik05IDEybDIgMiA0LTQiLz48L2c+Cjwvc3ZnPg=="
-  },
-  {
-    "id": "servicos",
-    "tasks": [
-      "emitir crachás de acesso para clientes"
-    ],
-    "order": 10,
-    "name": "Serviços Systekna",
-    "cat": "Identidade",
-    "h": 282,
-    "ic": "cracha",
-    "status": "lab",
-    "short": "Emissão de crachás para clientes",
-    "desc": "App para qualquer serviço pedir à Governança permissão para emitir crachás a clientes com carteira.",
-    "feats": [
-      "Pedido de credenciamento",
-      "Emissão de crachás de acesso"
-    ],
-    "data": "Nenhum dado pessoal em servidor",
-    "url": "https://celsoalmeidalf.github.io/servicos-systekna/",
-    "repoUrl": "https://github.com/CelsoAlmeidaLF/servicos-systekna",
-    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzdFRENBMCIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjMzRBODYzIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ii41MiIgc3RvcC1jb2xvcj0iIzFFODA0OCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzJBOTQ1NyIvPgogIDwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2IDI1Nikgc2NhbGUoMTIpIHRyYW5zbGF0ZSgtMTIgLTEyKSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIgogICAgIHN0cm9rZS13aWR0aD0iMS43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xMiAzbDIuNCAxLjggMy0uMi45IDIuOSAyLjQgMS44LTEgMi44IDEgMi44LTIuNCAxLjgtLjkgMi45LTMtLjJMMTIgMjFsLTIuNC0xLjgtMyAuMi0uOS0yLjktMi40LTEuOCAxLTIuOC0xLTIuOCAyLjQtMS44LjktMi45IDMgLjJ6Ii8+PHBhdGggZD0iTTguNSAxMmwyLjUgMi41IDQuNS01Ii8+PC9nPgo8L3N2Zz4="
+    "data": "Fica no aparelho",
+    "url": "https://celsoalmeidalf.github.io/agenda-remay-instalar/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/agenda-remay-instalar",
+    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0MwODRGQyIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjOTMzM0VBIi8+PHN0b3Agb2Zmc2V0PSIuNTIiIHN0b3AtY29sb3I9IiM3RTIyQ0UiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM2QjIxQTgiLz4KICA8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0idXJsKCNnKSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1NiAyNTYpIHNjYWxlKDEyKSB0cmFuc2xhdGUoLTEyIC0xMikiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIKICAgICBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjEgMTV2NGEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMnYtNE03IDEwbDUgNSA1LTVNMTIgMTVWMyIvPjwvZz4KPC9zdmc+"
   }
-].map(a => Object.assign({
-  url: "", repoUrl: "", docsUrl: "", version: "", versionAt: "", news: "", visible: true, featured: false,
-  storyTitle: "", storyText: "", imgId: "", iconBase64: "", shots: [], tasks: []
-}, a));
+];

@@ -21,9 +21,16 @@ const ICON={
  chave:'M15 7a4 4 0 11-3.5 6L5 19.5V22H2v-3l1.5-1.5M14 10h.01',escudo:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4',cracha:'M6 3h12v18H6zM10 3v3h4V3M9 16h6M10 11a2 2 0 104 0 2 2 0 00-4 0',
  grafico:'M4 19V5M4 19h16M8 15l4-4 3 3 5-6',loja:'M6 8h12l-1.2 12H7.2zM9 8a3 3 0 016 0',mensagem:'M4 5h16v11H8l-4 4z',
  coracao:'M12 21s-7-4.4-9.3-9A5 5 0 0112 6a5 5 0 019.3 6C19 16.6 12 21 12 21z',foto:'M4 7h4l2-3h4l2 3h4v13H4zM12 17a4 4 0 100-8 4 4 0 000 8z',iot:'M5 12a7 7 0 0114 0M8 12a4 4 0 018 0M12 12v8M9 20h6',
- lamp:'M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.4 1.2 4.5 3 5.7V17a1 1 0 001 1h6a1 1 0 001-1v-2.3c1.8-1.2 3-3.3 3-5.7a7 7 0 00-7-7z',alerta:'M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z'};
+ lamp:'M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.4 1.2 4.5 3 5.7V17a1 1 0 001 1h6a1 1 0 001-1v-2.3c1.8-1.2 3-3.3 3-5.7a7 7 0 00-7-7z',alerta:'M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z',
+ haltere:'M6.5 6.5l11 11M6 20l-2-2a3 3 0 010-4.24l1.41-1.42 4.25 4.25L8.24 18A3 3 0 016 20zM18 4l2 2a3 3 0 010 4.24l-1.41 1.42-4.25-4.25L15.76 6A3 3 0 0118 4z',
+ tributo:'M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1zM8 7h8M8 11h8M8 15h5',
+ investimento:'M23 6l-9.5 9.5-5-5L1 18M17 6h6v6',
+ bar:'M8 22h8M12 15v7M5 3h14l-1.5 7a5.5 5.5 0 01-11 0L5 3z',
+ calculadora:'M4 2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2zm4 4h8M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01',
+ balanca:'M12 3v18M6 8l6-2 6 2M6 8a4 4 0 008 0M18 8a4 4 0 008 0M3 21h18',
+ lupa:'M21 21l-4.35-4.35M19 11a8 8 0 11-16 0 8 8 0 0116 0z'};
 const ST={ok:['ok','Disponível'],beta:['beta','Beta'],lab:['lab','Experimental']};
-const CAT_H={'Finanças':212,'Casa':18,'Negócios':328,'Identidade':186};
+const CAT_H={'Fitness':142,'Finanças':212,'Negócios':328,'Identidade':186,'Produtividade':280,'Governo':168,'Sistemas':190,'Casa':18};
 
 let SUP={},SUGS=[],supTab='pix',supAmt=10,APPS=[],status='loading',store=null,me=null,NAMES={},deferredInstall=null,swWaiting=null,isAdmin=false,assets=null,RV={},REP={},myId=null,userNS=null,myRevDoc=null,tabApp=null,rvApp=null,rvStars=0,pendingRender=false;
 let favs=local.get('favs',[]),rates=local.get('rates',{}),cat=null,q='',tab='geral',auto=null,draft=null,lastDel=null;
