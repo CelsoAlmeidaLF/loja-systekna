@@ -30,12 +30,14 @@ const ICON={
  balanca:'M12 3v18M6 8l6-2 6 2M6 8a4 4 0 008 0M18 8a4 4 0 008 0M3 21h18',
  lupa:'M21 21l-4.35-4.35M19 11a8 8 0 11-16 0 8 8 0 0116 0z'};
 const ST={ok:['ok','Disponível'],beta:['beta','Beta'],lab:['lab','Experimental']};
-const CAT_H={'Fitness':142,'Finanças':212,'Negócios':328,'Identidade':186,'Produtividade':280,'Governo':168,'Sistemas':190,'Casa':18};
+const CAT_H={'Fitness':142,'Finanças':212,'Negócios':328,'Identidade':186,'Produtividade':280,'Governo':168,'Sistemas':190};
 
 let SUP={},SUGS=[],supTab='pix',supAmt=10,APPS=[],status='loading',store=null,me=null,NAMES={},deferredInstall=null,swWaiting=null,isAdmin=false,assets=null,RV={},REP={},myId=null,userNS=null,myRevDoc=null,tabApp=null,rvApp=null,rvStars=0,pendingRender=false;
 let favs=local.get('favs',[]),rates=local.get('rates',{}),cat=null,q='',tab='geral',auto=null,draft=null,lastDel=null;
-const pub=()=>APPS.filter(a=>a.visible!==false);
-const byId=id=>APPS.find(a=>a.id===id);
+const BANNED_IDS = new Set(['corretor', 'carros', 'despesas-casa']);
+const isBanned = a => !a || BANNED_IDS.has(a.id) || /corretor|im[oó]vel|carro/i.test(a.name || '') || /im[oó]vel|ve[ií]culo/i.test(a.cat || '');
+const pub=()=>APPS.filter(a=>a.visible!==false&&!isBanned(a));
+const byId=id=>{const a=APPS.find(x=>x.id===id);return(a&&!isBanned(a))?a:null};
 const DAY=864e5,fmt1=n=>n.toFixed(1).replace('.',','),dbr=iso=>{const d=new Date(iso);return isNaN(d)?'':d.toLocaleDateString('pt-BR')};
 const isRecent=(a,days)=>!!a.versionAt&&(Date.now()-Date.parse(a.versionAt))<(days||14)*DAY;
 const revs=id=>(RV[id]||[]).slice().sort((a,b)=>String(b.at).localeCompare(String(a.at)));
@@ -534,7 +536,7 @@ render(true);
 (async()=>{
   try{store=await createStore(CFG)}catch(e){status='off';render(true);return}
   store.onAuth(applyUser);
-  store.onApps(list=>{APPS=list.sort((a,b)=>(+a.order||999)-(+b.order||999)||String(a.name).localeCompare(String(b.name)));status='ok';if(isForm()&&!draft)render(true);else safeRender()},
+  store.onApps(list=>{APPS=list.filter(a=>!isBanned(a)).sort((a,b)=>(+a.order||999)-(+b.order||999)||String(a.name).localeCompare(String(b.name)));status='ok';if(isForm()&&!draft)render(true);else safeRender()},
     ()=>{status='err';if(!isForm())render(true)});
   store.onReviews(list=>{lastRev=list;const m={},nm={};let mine=null;list.forEach(d=>{const ap=d.apps||{};nm[d.id]={name:String(d.name||'').slice(0,60),photo:String(d.photo||'')};if(d.id===myId)mine=d;
       Object.keys(ap).forEach(k=>{const r=ap[k];if(!r||!(+r.stars>=1&&+r.stars<=5))return;(m[k]=m[k]||[]).push({uid:d.id,stars:Math.round(+r.stars),text:String(r.text||'').slice(0,500),at:String(r.at||'')})})});

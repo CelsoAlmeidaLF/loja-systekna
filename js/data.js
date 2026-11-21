@@ -23,13 +23,31 @@ function demoStore(cfg) {
   const read = (k, d) => { try { const v = localStorage.getItem(K + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } };
   const write = (k, v) => { try { localStorage.setItem(K + k, JSON.stringify(v)); } catch (e) { throw err("quota", "Espaço do navegador cheio"); } };
 
-  const CURRENT_SEED_VER = 4;
+  const BANNED_IDS = new Set(["corretor", "carros", "despesas-casa"]);
+  const isBanned = (id, a) => BANNED_IDS.has(id) || /corretor|im[oó]vel|carro/i.test((a && a.name) || '') || /im[oó]vel|ve[ií]culo/i.test((a && a.cat) || '');
+
+  // Expurgar proativamente apps legados de corretora ou venda de carros do armazenamento local
+  try {
+    const raw = read("apps", {});
+    let hasBanned = false;
+    for (const [id, a] of Object.entries(raw)) {
+      if (isBanned(id, a)) {
+        delete raw[id];
+        hasBanned = true;
+      }
+    }
+    if (hasBanned) write("apps", raw);
+  } catch (_) {}
+
+  const CURRENT_SEED_VER = 5;
   const lastSeedVer = read("seed_ver", 0);
   if (lastSeedVer < CURRENT_SEED_VER) {
     const currentApps = {};
     SEED.forEach(a => {
-      const { id, ...rest } = a;
-      currentApps[id] = Object.assign({}, rest);
+      if (!isBanned(a.id, a)) {
+        const { id, ...rest } = a;
+        currentApps[id] = Object.assign({}, rest);
+      }
     });
     write("apps", currentApps);
     write("seed_ver", CURRENT_SEED_VER);
@@ -37,7 +55,7 @@ function demoStore(cfg) {
   }
 
   const subs = { apps: new Set(), reviews: new Set(), replies: new Set(), settings: new Set(), suggestions: new Set() };
-  const list = c => Object.entries(read(c, {})).map(([id, v]) => Object.assign({ id }, v));
+  const list = c => Object.entries(read(c, {})).filter(([id, v]) => c !== 'apps' || !isBanned(id, v)).map(([id, v]) => Object.assign({ id }, v));
   const emit = c => subs[c] && subs[c].forEach(cb => cb(list(c)));
   const on = c => (cb) => { subs[c].add(cb); setTimeout(() => cb(list(c)), 0); return () => subs[c].delete(cb); };
   const put = (c, id, v) => { const m = read(c, {}); if (v === null) delete m[id]; else m[id] = v; write(c, m); emit(c); };
@@ -229,7 +247,13 @@ async function firebaseStore(cfg) {
   };
 
   const col = c => (cb, onErr) => F.onSnapshot(F.collection(db, c),
-    s => cb(s.docs.map(d => Object.assign({ id: d.id }, d.data()))), e => onErr && onErr(e));
+    s => {
+      let docs = s.docs.map(d => Object.assign({ id: d.id }, d.data()));
+      if (c === 'apps') {
+        docs = docs.filter(d => !BANNED_IDS.has(d.id) && !/corretor|im[oó]vel|carro/i.test((d && d.name) || '') && !/im[oó]vel|ve[ií]culo/i.test((d && d.cat) || ''));
+      }
+      cb(docs);
+    }, e => onErr && onErr(e));
   const cache = new Map();
   const map = e => { const c = e && e.code || ""; return err(c.includes("permission") ? "permission" : c.includes("unavailable") ? "offline" : c || "unknown", e && e.message); };
   const wrap = p => p.catch(e => { throw map(e); });
