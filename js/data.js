@@ -26,14 +26,15 @@ function demoStore(cfg) {
   const BANNED_IDS = new Set([
     "corretor", "carros", "despesas-casa", "financas-casa", "stk-desp-firebase-google", "desp-firebase",
     "agenda-remay", "agenda-remay-instalar", "remay",
-    "feedback-painel", "feedback", "governanca-systekna", "governanca"
+    "feedback-painel", "feedback", "governanca-systekna", "governanca",
+    "identidade-systekna", "identidade", "carteira-soberana", "soberana"
   ]);
   const isBanned = (id, a) => BANNED_IDS.has(id) || 
-    /corretor|im[oó]vel|carro|remay|feedback|governan[cç]a|finan[cç]as.*casa|despesas?.*casa|stk-desp/i.test((a && a.name) || '') || 
-    /im[oó]vel|ve[ií]culo|remay|casa/i.test((a && a.cat) || '') ||
-    /remay|feedback|governan[cç]a|financas-casa|despesas-casa|stk-desp/i.test(id || '');
+    /corretor|im[oó]vel|carro|remay|feedback|governan[cç]a|finan[cç]as.*casa|despesas?.*casa|stk-desp|identidade|soberana/i.test((a && a.name) || '') || 
+    /im[oó]vel|ve[ií]culo|remay|casa|identidade|soberana/i.test((a && a.cat) || '') ||
+    /remay|feedback|governan[cç]a|financas-casa|despesas-casa|stk-desp|identidade|soberana/i.test(id || '');
 
-  // Expurgar proativamente apps legados, pessoais e nao-STK (corretora, carros, remay, feedback, governanca, financas da casa) do armazenamento local
+  // Expurgar proativamente apps legados, pessoais, nao-STK e identidade soberana do armazenamento local
   try {
     const raw = read("apps", {});
     let hasBanned = false;
@@ -46,7 +47,7 @@ function demoStore(cfg) {
     if (hasBanned) write("apps", raw);
   } catch (_) {}
 
-  const CURRENT_SEED_VER = 8;
+  const CURRENT_SEED_VER = 9;
   const lastSeedVer = read("seed_ver", 0);
   if (lastSeedVer < CURRENT_SEED_VER) {
     const currentApps = {};
