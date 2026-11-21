@@ -23,10 +23,13 @@ function demoStore(cfg) {
   const read = (k, d) => { try { const v = localStorage.getItem(K + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } };
   const write = (k, v) => { try { localStorage.setItem(K + k, JSON.stringify(v)); } catch (e) { throw err("quota", "Espaço do navegador cheio"); } };
 
-  const BANNED_IDS = new Set(["corretor", "carros", "despesas-casa"]);
-  const isBanned = (id, a) => BANNED_IDS.has(id) || /corretor|im[oó]vel|carro/i.test((a && a.name) || '') || /im[oó]vel|ve[ií]culo/i.test((a && a.cat) || '');
+  const BANNED_IDS = new Set(["corretor", "carros", "despesas-casa", "agenda-remay", "agenda-remay-instalar", "remay"]);
+  const isBanned = (id, a) => BANNED_IDS.has(id) || 
+    /corretor|im[oó]vel|carro|remay/i.test((a && a.name) || '') || 
+    /im[oó]vel|ve[ií]culo|remay/i.test((a && a.cat) || '') ||
+    /remay/i.test(id || '');
 
-  // Expurgar proativamente apps legados de corretora ou venda de carros do armazenamento local
+  // Expurgar proativamente apps legados e nao-STK (corretora, carros, remay) do armazenamento local
   try {
     const raw = read("apps", {});
     let hasBanned = false;
@@ -39,7 +42,7 @@ function demoStore(cfg) {
     if (hasBanned) write("apps", raw);
   } catch (_) {}
 
-  const CURRENT_SEED_VER = 5;
+  const CURRENT_SEED_VER = 6;
   const lastSeedVer = read("seed_ver", 0);
   if (lastSeedVer < CURRENT_SEED_VER) {
     const currentApps = {};

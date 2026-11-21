@@ -1,5 +1,5 @@
 /* Catálogo oficial completo da Loja Systekna (Play Store Systekna).
-   Contém todos os 16 aplicativos ativos do ecossistema com links de produção no GitHub Pages,
+   Contém todos os 15 aplicativos ativos do ecossistema Systekna (STK) com links de produção no GitHub Pages,
    repositórios no GitHub, recursos, metadados e os ÍCONES OFICIAIS autênticos de cada APP. */
 export const SEED = [
   {
@@ -336,26 +336,5 @@ export const SEED = [
     "url": "https://celsoalmeidalf.github.io/identidade-systekna/",
     "repoUrl": "https://github.com/CelsoAlmeidaLF/identidade-systekna",
     "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzdDQ0JGOCIvPjxzdG9wIG9mZnNldD0iLjQ4IiBzdG9wLWNvbG9yPSIjM0JBMEVBIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ii41MiIgc3RvcC1jb2xvcj0iIzFBN0FENCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzJCOERFMiIvPgogIDwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTEyIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU2IDI1Nikgc2NhbGUoMTIpIHRyYW5zbGF0ZSgtMTIgLTEyKSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIgogICAgIHN0cm9rZS13aWR0aD0iMS43IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xMiAzbDcgM3Y1YzAgNC41LTMgOC4zLTcgMTAtNC0xLjctNy01LjUtNy0xMFY2eiIvPjxwYXRoIGQ9Ik05IDEybDIgMiA0LTQiLz48L2c+Cjwvc3ZnPg=="
-  },
-  {
-    "id": "agenda-remay-instalar",
-    "order": 16,
-    "name": "Agenda Remay",
-    "cat": "Produtividade",
-    "h": 140,
-    "ic": "agenda",
-    "status": "ok",
-    "short": "PWA, APK e Extensão Chrome de agendamentos",
-    "desc": "Hub de instalação da Agenda Remay para atendimento pessoal, salão e estética com suporte a Android (APK) e Chrome Web Store.",
-    "feats": [
-      "Instalação PWA direta no celular",
-      "Download de APK assinado para Android",
-      "Pacote de extensão para navegador Chrome",
-      "Sincronização Local-First"
-    ],
-    "data": "Fica no aparelho",
-    "url": "https://celsoalmeidalf.github.io/agenda-remay-instalar/",
-    "repoUrl": "https://github.com/CelsoAlmeidaLF/agenda-remay-instalar",
-    "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj4KICA8cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjQwIiBmaWxsPSIjMEUxMjEwIi8+CiAgPHJlY3QgeD0iNDQiIHk9IjUyIiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjEwMCIgcng9IjE0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2RkNGOTciIHN0cm9rZS13aWR0aD0iOCIvPgogIDxwYXRoIGQ9Ik02OCA0NHYyME0xMjQgNDR2MjBNNDQgODRoMTA0IiBmaWxsPSJub25lIiBzdHJva2U9IiM2RkNGOTciIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTc4IDExNmwxMiAxMiAyNi0yOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNkZDRjk3IiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K"
   }
 ];
