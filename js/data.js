@@ -47,7 +47,7 @@ function demoStore(cfg) {
     if (hasBanned) write("apps", raw);
   } catch (_) {}
 
-  const CURRENT_SEED_VER = 9;
+  const CURRENT_SEED_VER = 10;
   const lastSeedVer = read("seed_ver", 0);
   if (lastSeedVer < CURRENT_SEED_VER) {
     const currentApps = {};
