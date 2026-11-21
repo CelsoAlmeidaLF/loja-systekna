@@ -132,7 +132,11 @@ main{min-width:0;width:100%;max-width:920px;margin:0 auto;padding-block:20px cal
 
 /* categorias */
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media (min-width:700px){.tiles{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:360px){.tiles{grid-template-columns:1fr}}
+@media (min-width:640px) and (max-width:960px){.tiles{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:961px){.tiles{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:1200px){main{max-width:1080px}}
+@media (min-width:1441px){main{max-width:1180px}}
 .tile{--h:210;position:relative;overflow:hidden;cursor:pointer;text-align:left;padding:16px;min-height:112px;border-radius:var(--r);color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;
   background:var(--surface);border:1px solid var(--line);transition:border-color .2s,box-shadow .2s}
 .tile:hover{box-shadow:var(--shadow)}
