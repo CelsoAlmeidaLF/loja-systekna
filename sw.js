@@ -1,10 +1,10 @@
 /* Loja Systekna · service worker v1.4.2
    Atualização imediata com self.skipWaiting() e estratégia Network-First para scripts. */
-const VERSION = "stk-loja-v1.4.2";
+const VERSION = "stk-loja-v1.4.3";
 const SHELL = [
   "./", "./index.html", "./manifest.webmanifest",
   "./css/styles.css",
-  "./js/config.js", "./js/app.js", "./js/data.js", "./js/seed.js", "./js/vendor/qrcode.js",
+  "./js/config.js", "./js/program.js", "./js/Program.js", "./js/app.js", "./js/data.js", "./js/seed.js", "./js/vendor/qrcode.js",
   "./icons/icon-192.png", "./icons/icon-512.png", "./icons/maskable-512.png", "./icons/apple-touch-icon.png"
 ];
 
