@@ -21,8 +21,8 @@ export const SEED = [
     ],
     "data": "Fica no aparelho",
     "featured": true,
-    "storyTitle": "Treino de força soberano",
-    "storyText": "Zero anúncios, sem telemetria e com controle total das suas séries e cargas no aparelho.",
+    "storyTitle": "Treino de força no seu ritmo",
+    "storyText": "Zero anúncios, sem telemetria e com suas séries e cargas guardadas no aparelho.",
     "url": "https://celsoalmeidalf.github.io/fit-force/",
     "repoUrl": "https://github.com/CelsoAlmeidaLF/fit-force",
     "iconBase64": "data:image/webp;base64,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"
@@ -131,7 +131,7 @@ export const SEED = [
     "ic": "cripto",
     "status": "ok",
     "short": "Conversor e carteira de criptomoedas",
-    "desc": "Converta criptomoedas e acompanhe em reais o valor de uma carteira simulada com segurança militar.",
+    "desc": "Converta criptomoedas e acompanhe em reais o valor de uma carteira simulada.",
     "feats": [
       "Cotações de criptoativos em tempo real",
       "Simulador de carteira de criptoativos",
@@ -204,8 +204,8 @@ export const SEED = [
     ],
     "data": "Fica no aparelho",
     "featured": true,
-    "storyTitle": "Organização soberana para o seu negócio",
-    "storyText": "Controle seus atendimentos e horários sem risco de perder o acesso à sua base de clientes.",
+    "storyTitle": "Organização para o seu negócio",
+    "storyText": "Controle seus atendimentos e horários no aparelho, com exportação de backup da sua base de clientes.",
     "url": "https://celsoalmeidalf.github.io/agenda/",
     "repoUrl": "https://github.com/CelsoAlmeidaLF/agenda",
     "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0iI2MyMjU1YyIvPjxyZWN0IHg9IjExMiIgeT0iMTI4IiB3aWR0aD0iMjg4IiBoZWlnaHQ9IjI3MiIgcng9IjM2IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMzIiLz48cGF0aCBkPSJNMTEyIDIwMGgyODhNMTg0IDk2djY0TTMyOCA5NnY2NCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cmVjdCB4PSIyNjAiIHk9IjI1NiIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjgwIiByeD0iMTYiIGZpbGw9IiNmZmYiLz48L3N2Zz4K"
@@ -224,7 +224,7 @@ export const SEED = [
       "Simulação de impostos diretos e indiretos",
       "Comparação do custo do estado brasileiro",
       "Tabelas oficiais e parâmetros cívicos abertos",
-      "Zero dados coletados: privacidade absoluta"
+      "Zero dados coletados"
     ],
     "data": "Fica no aparelho",
     "url": "https://celsoalmeidalf.github.io/calculadora/",
