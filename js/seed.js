@@ -206,8 +206,8 @@ export const SEED = [
     "featured": true,
     "storyTitle": "Organização soberana para o seu negócio",
     "storyText": "Controle seus atendimentos e horários sem risco de perder o acesso à sua base de clientes.",
-    "url": "https://celsoalmeidalf.github.io/studio-agenda-completo/",
-    "repoUrl": "https://github.com/CelsoAlmeidaLF/studio-agenda-completo",
+    "url": "https://celsoalmeidalf.github.io/agenda/",
+    "repoUrl": "https://github.com/CelsoAlmeidaLF/agenda",
     "iconBase64": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0iI2MyMjU1YyIvPjxyZWN0IHg9IjExMiIgeT0iMTI4IiB3aWR0aD0iMjg4IiBoZWlnaHQ9IjI3MiIgcng9IjM2IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMzIiLz48cGF0aCBkPSJNMTEyIDIwMGgyODhNMTg0IDk2djY0TTMyOCA5NnY2NCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cmVjdCB4PSIyNjAiIHk9IjI1NiIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjgwIiByeD0iMTYiIGZpbGw9IiNmZmYiLz48L3N2Zz4K"
   },
   {
