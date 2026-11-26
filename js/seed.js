@@ -16,8 +16,7 @@ export const SEED = [
       "Cálculo de 1RM e sobrecarga progressiva",
       "Mapa anatômico de prontidão muscular",
       "Cronômetro de descanso em segundo plano",
-      "Bloqueio com PIN e 12 palavras BIP39",
-      "Emissão de Certificado de Segurança PDF"
+      "Backup offline dos treinos"
     ],
     "data": "Fica no aparelho",
     "featured": true,
@@ -36,17 +35,15 @@ export const SEED = [
     "ic": "coracao",
     "status": "ok",
     "short": "Saúde corporal, dieta, água e treinos",
-    "desc": "Acompanhamento de peso, cálculo de TMB/TDEE (Mifflin-St Jeor), registro de refeições, ingestão de água e biometria segura.",
+    "desc": "Acompanhamento de peso, cálculo de TMB/TDEE (Mifflin-St Jeor), registro de refeições, ingestão de água e medidas corporais.",
     "feats": [
       "Cálculo metabólico e metas calóricas",
       "Registro diário de refeições e água",
-      "Evolução de peso e histórico corporal",
-      "Bloqueio por PIN tátil e biometria",
-      "Certificado de segurança PDF e 12 palavras"
+      "Evolução de peso e histórico corporal"
     ],
     "data": "Fica no aparelho",
     "featured": true,
-    "storyTitle": "Saúde e nutrição sem vazamento",
+    "storyTitle": "Saúde e nutrição no seu dia a dia",
     "storyText": "Seus dados corporais, metas e diários não saem do seu celular.",
     "url": "https://celsoalmeidalf.github.io/fit-smart/",
     "repoUrl": "https://github.com/CelsoAlmeidaLF/fit-smart",
@@ -66,9 +63,9 @@ export const SEED = [
       "Cálculo de CBS federal e IBS subnacional",
       "Transição gradual de alíquotas 2026-2033",
       "Exportação de relatórios fiscais",
-      "Cofre criptográfico AES-GCM 256 bits"
+      "Cesta básica nacional e split payment"
     ],
-    "data": "Criptografado no aparelho",
+    "data": "Fica no aparelho",
     "featured": true,
     "storyTitle": "Entenda o impacto da reforma fiscal",
     "storyText": "Simule o IVA Dual e calcule impostos da sua empresa com precisão matemática.",
@@ -89,7 +86,7 @@ export const SEED = [
     "feats": [
       "Lançamentos com categorização inteligente",
       "Faturas de cartão de crédito",
-      "Cofre com recuperação por 12 palavras",
+      "Metas e controle de dívidas",
       "Modo claro e escuro Glassmorphism"
     ],
     "data": "Fica no aparelho",
@@ -112,7 +109,7 @@ export const SEED = [
       "Comparador CDI vs Poupança vs IPCA+",
       "Gráficos interativos de evolução patrimonial",
       "Cálculo automático de Imposto de Renda regressivo",
-      "Persistência local segura sem servidores"
+      "Projeção de patrimônio futuro"
     ],
     "data": "Fica no aparelho",
     "featured": true,
@@ -135,7 +132,7 @@ export const SEED = [
     "feats": [
       "Cotações de criptoativos em tempo real",
       "Simulador de carteira de criptoativos",
-      "Cofre local cifrado por PBKDF2 e AES-GCM"
+      "Conversor de criptomoedas para reais"
     ],
     "data": "Fica no aparelho",
     "url": "https://celsoalmeidalf.github.io/cripto-sim/",
@@ -176,7 +173,7 @@ export const SEED = [
       "Gestão de mesas e pedidos individuais",
       "Fechamento de caixa diário e sangrias",
       "Impressão térmica ESC/POS de comandas",
-      "Cofre de equipe com 12 palavras e reautenticação"
+      "Controle de estoque"
     ],
     "data": "Fica no aparelho",
     "featured": true,
